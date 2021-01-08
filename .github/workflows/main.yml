@@ -1,0 +1,18 @@
+name: Compile LaTeX
+on: [push]
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up git repository
+        uses: actions/checkout@v2
+      - name: Compile
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: patch-frame-note.tex
+          latexmk_use_xelatex: true
+      - name: Upload pdf
+        uses: actions/upload-artifact@v2
+        with:
+          name: patch-frame-note.pdf
+          path: patch-frame-note.pdf
