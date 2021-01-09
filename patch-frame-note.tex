@@ -35,7 +35,22 @@
 \newtheorem{defn}{Definition}
 \newtheorem{example}{Example}
 
+\newcommand{\is}{:\equiv}
+
+\newcommand{\framenm}{\mathsf{Frame}}
+
+\newcommand{\isnuclearnm}{\mathsf{isNuclear}}
+\newcommand{\isnuclear}[1]{\isnuclearnm{}\left(#1\right)}
+\newcommand{\nucleus}{\mathsf{Nucleus}}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\hprop}{\Omega}
+
+\newcommand{\meet}[2]{#1 \wedge #2}
+
 \newcommand{\pow}[1]{\mathcal{P}\left(#1\right)}
+\newcommand{\pity}[3]{\prod_{(#1~:~#2)} #3}
+\newcommand{\sigmaty}[3]{\sum_{(#1~:~#2)} #3}
+\newcommand{\univ}{\mathcal{U}}
 
 \title{A Construction of The Patch Frame in Univalent Type Theory}
 \author{Ayberk Tosun \and Mart\'{i}n Escard\'{o}}
@@ -47,6 +62,25 @@
 \begin{abstract}
 \end{abstract}
 
+\section{Preliminaries}
+
+\begin{defn}[Nucleus]\label{defn:nucleus}
+  Let $F : \framenm{}$ be a frame and $j : \abs{F} \rightarrow \abs{F}$, an endofunction
+  on it. We say that $j$ is \emph{nuclear} iff the following condition holds:
+  \begin{alignat*}{5}
+    \isnuclearnm{}\quad&:\quad &&(\abs{F} \rightarrow \abs{F}) \rightarrow \hprop{} && && &&              \\
+    \isnuclear{j} \quad&\is\quad
+       &&\pity{x~y}{\abs{F}}{j(\meet{x}{y}) &&~=~ &&\meet{j(x)}{j(y)}}   &&\qquad[\text{meet-preservation}]\\
+      &\hspace{0.5em}\times\quad &&\pity{x~~}{\abs{F}}{x &&~\sqsubseteq~ &&j(x)}            &&\qquad[\text{inflation}]  \\
+      &\hspace{0.5em}\times\quad &&\pity{x~~}{\abs{F}}{j(j(x)) &&~\sqsubseteq~ &&j(x)}      &&\qquad[\text{idempotence}].
+  \end{alignat*}
+  Propositionality follows from the closure of $\Omega$ under $\prod$ and $\sum$ types along
+  with the fact that the carrier type is an h-set. The type of nuclei is then
+  just the $\sum$ type collecting all nuclear endofunctions on a frame:
+  \begin{equation*}
+    \nucleus{}(F) \quad\is\quad \sigmaty{j}{\abs{F} \rightarrow \abs{F}}{\isnuclear{j}}.
+  \end{equation*}
+\end{defn}
 \printbibliography
 
 \end{document}
