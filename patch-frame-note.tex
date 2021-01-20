@@ -1,4 +1,4 @@
-\documentclass[11pt,a4paper]{article}
+\documentclass[a4paper, 10pt]{article}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -6,7 +6,7 @@
 %%%%%%%%
 
 
-\usepackage[margin=3cm]{geometry}
+\usepackage{fullpage}
 \usepackage{amsmath}
 \usepackage{amsthm}
 
@@ -35,22 +35,10 @@
 \newtheorem{defn}{Definition}
 \newtheorem{example}{Example}
 
-\newcommand{\is}{:\equiv}
-
-\newcommand{\framenm}{\mathsf{Frame}}
-
-\newcommand{\isnuclearnm}{\mathsf{isNuclear}}
-\newcommand{\isnuclear}[1]{\isnuclearnm{}\left(#1\right)}
-\newcommand{\nucleus}{\mathsf{Nucleus}}
-\newcommand{\abs}[1]{\left| #1 \right|}
-\newcommand{\hprop}{\Omega}
-
-\newcommand{\meet}[2]{#1 \wedge #2}
-
-\newcommand{\pow}[1]{\mathcal{P}\left(#1\right)}
-\newcommand{\pity}[3]{\prod_{(#1~:~#2)} #3}
-\newcommand{\sigmaty}[3]{\sum_{(#1~:~#2)} #3}
-\newcommand{\univ}{\mathcal{U}}
+%% Universe notation.
+\newcommand{\UU}{\mathcal{U}}
+\newcommand{\VV}{\mathcal{V}}
+\newcommand{\WW}{\mathcal{W}}
 
 \title{A Construction of The Patch Frame in Univalent Type Theory}
 \author{Ayberk Tosun \and Mart\'{i}n Escard\'{o}}
@@ -60,47 +48,144 @@
 \maketitle
 
 \begin{abstract}
+  Lorem ipsum.
 \end{abstract}
 
-\section{Introduction}
+\begin{defn}[Family]
+  A ``$\UU$-family on type $A$'' is\footnote{%
+    It would be reasonable to require $I$ to be an h-set and $f$ to be injective but we are
+    providing a direct translation of the definition in our formalisation. This definition might
+    have to be updated with these requirements.
+  }
+  simply a pair $(I, f)$ where $I : \UU$ and $f : I \rightarrow A$. We denote the type of
+  $\UU$-families by $\mathsf{Fam}$ i.e.\ $\mathsf{Fam}_{\UU}(A) :\equiv \Sigma_{(I : \UU)} I \rightarrow A$.
+\end{defn}
 
-%% TODO.
+\begin{defn}[Directed family]
+  A family $(I, f)$ on some type $A$ is called \emph{directed} iff (1) $I$ is inhabited, and (2) for
+  every $i, j : I$, there exists some $k : I$ such that $f(k)$ is the upper bound of
+  $\{ f(i), f(j) \}$.
+\end{defn}
 
-\section{Preliminaries}
+Our definition of a frame is parameterised by three universes: one for the carrier set, one for the
+order, and one for the index type of families on which the join operation is defined. We adopt the
+convention of using universe variables of $\UU$, $\VV$, and $\WW$ for these respectively.
 
-\begin{defn}[Nucleus]\label{defn:nucleus}
-  Let $F : \framenm{}$ be a frame and $j : \abs{F} \rightarrow \abs{F}$, an endofunction
-  on it. We say that $j$ is \emph{nuclear} iff the following condition holds:
-  \begin{alignat*}{5}
-    \isnuclearnm{}\quad&:\quad &&(\abs{F} \rightarrow \abs{F}) \rightarrow \hprop{} && && &&              \\
-    \isnuclear{j} \quad&\is\quad
-       &&\pity{x~y}{\abs{F}}{j(\meet{x}{y}) &&~=~ &&\meet{j(x)}{j(y)}}   &&\qquad[\text{meet-preservation}]\\
-      &\hspace{0.5em}\times\quad &&\pity{x~~}{\abs{F}}{x &&~\sqsubseteq~ &&j(x)}            &&\qquad[\text{inflation}]  \\
-      &\hspace{0.5em}\times\quad &&\pity{x~~}{\abs{F}}{j(j(x)) &&~\sqsubseteq~ &&j(x)}      &&\qquad[\text{idempotence}].
-  \end{alignat*}
-  Propositionality follows from the closure of $\Omega$ under $\prod$ and $\sum$ types along
-  with the fact that the carrier type is an h-set. The type of nuclei is then
-  just the $\sum$ type collecting all nuclear endofunctions on a frame:
+\begin{defn}[Frame]
+  A $(\UU, \VV, \WW)$-frame consists of:
+  \begin{itemize}
+    \item an h-set $| F | : \UU$,
+    \item a partial order $\_\le\_\ :\ | F | \rightarrow \Omega_\VV$,
+    \item a top element $\top : | F |$,
+    \item a meet operation i.e.\ an operation $\_\wedge\_\ :\ | F | \rightarrow | F | \rightarrow | F |$
+      such that $x \wedge y$ is the GLB of $x$ and $y$ for every $x, y : | F |$, and
+    \item a join operation i.e.\ an operation $\bigvee\_ : \mathsf{Fam}_{\WW}(| F |) \rightarrow
+      | F |$ such that given a family $\{ x_i \}_{i \in I}$, $\bigvee_i x_i$ is the LUB
+      of $\{ x_i \}_{i \in I}$,
+  \end{itemize}
+  such that binary meets distribute over arbitrary joins:
   \begin{equation*}
-    \nucleus{}(F) \quad\is\quad \sigmaty{j}{\abs{F} \rightarrow \abs{F}}{\isnuclear{j}}.
+    x \wedge \bigvee_{i : I} y_i = \bigvee_{i : I} x \wedge y_i
+  \end{equation*}
+  for every $x : | F |$, family $\{ y \} : \mathsf{Fam}_{\WW}(| F |)$.
+\end{defn}
+
+A nucleus on a frame $F$ is an equivalent characterisation of a regular monomorphism on the locale
+corresponding to $F$.
+
+\begin{defn}[Nucleus]
+  A nucleus on a $(\UU, \VV, \WW)$-frame $F$ is an endofunction
+  $j : | F | \rightarrow | F |$ satisfying:
+  \begin{itemize}
+    \item (meet-preservation) $j(x \wedge y) = j(x) \wedge j(y)$;
+    \item (inflation) $x \le j(x)$; and
+    \item (idempotence) $j(j(x)) \le j(x)$.
+  \end{itemize}
+  for every $x, y : | F |$.
+\end{defn}
+
+We write $\mathsf{Nucleus}(F)$ to denote the type of nuclei on a given frame $F$.
+
+\begin{prop}
+  Given any nucleus $F$, $\mathsf{Nucleus}(F)$ is an h-set.
+\end{prop}
+
+\begin{defn}[Scott-continuity]
+  A function $f : | F | \rightarrow | G | $ from a $(\UU, \VV, \WW)$-frame $F$ to a $(\UU, \VV, \WW)$-frame
+  $G$ is called \emph{Scott-continuous} iff given any \emph{directed}
+  $\{ x_i \}~:~\mathsf{Fam}_{\WW}(| F |)$,
+  \begin{equation*}
+    f\left(\bigvee^F_{i : I} x_i\right) = \bigvee^G_{i : I} f(x_i).
   \end{equation*}
 \end{defn}
 
-\section{The meet-semilattice of nuclei}
+\subsection{Meet-semilattice of nuclei}
+
+Nuclei form a meet-semilattice when ordered pointwise.
+
+\begin{defn}\label{defn:nuclei-semilattice}
+  The type of nuclei on a given frame $F$ forms a meet-semilattice as follows:
+  \begin{itemize}
+    \item order: given nuclei $j$ and $k$, $j \le k :\equiv \forall x \in | F |.\ j(x) \le k(x)$;
+    \item top nucleus: $\_ \mapsto \top_F$; and
+    \item meet of two nucleus: $j \wedge k :\equiv x \mapsto j(x) \wedge_F k(x)$.
+  \end{itemize}
+  The fact that $j \wedge k$ satisfies the nucleus laws is given in Proposition~\ref{prop:nuclei-meet}.
+\end{defn}
 
 \begin{prop}
-  Let $F$ be a frame. The set of nuclei on $F$ forms a poset under the pointwise
-  ordering: given nuclei $j, k : F \rightarrow F$,
-  \begin{equation*}
-    j \sqsubseteq k \quad:=\quad \pity{x}{F}{j(x) \sqsubseteq k(x)}
-  \end{equation*}
+  Given two nuclei $j$ and $k$ on some frame $F$, the function $x \mapsto j(x) \wedge k(x)$ is a nucleus.
 \end{prop}
 \begin{proof}
+  %% TODO: add the proof.
 \end{proof}
 
-\section{The frame of Scott-continuous nuclei}
+The nontrivial part of the patch frame construction is the join of a family $\{ k_i \}_{i : I}$.
+Defining it as
+\begin{equation*}
+  \bigvee_i k_i \quad:\equiv\quad x \mapsto \bigvee_{i \in I} k_i(x)
+\end{equation*}
+does not work as it is not idempotent and hence not a nucleus. The construction I have formalised
+(due to Escard\'{o}~\cite{properly-injective}) is based on the idea that, if we start with a family
+$\{ k_i \}_{i \in I}$ of nuclei, we can consider the family
+\begin{equation*}
+  \left\{ k_{i_0} \circ \cdots \circ k_{i_n} \right\}_{(i_0, \cdots, i_n) : \mathsf{List}(I)},
+\end{equation*}
+which will always be directed. However, this works only on Scott-continuous
+nuclei. Let us write this a bit more precisely as follows:
 
 \begin{defn}
+  Let $K :\equiv \{ k_i \}_{i \in I}$ be a family of nuclei on a given
+  $(\UU, \VV, \WW)$-frame $F$. We define $K^*$ as
+  the family $(\mathsf{List}(I), \mathfrak{d})$ where $\mathfrak{d}$ is defined
+  as:
+  \begin{align*}
+    \mathfrak{d}(\mathtt{[\ ]})      \quad&:\equiv\quad \mathsf{id}; \\
+    \mathfrak{d}(i\ \mathtt{::}\ is) \quad&:\equiv\quad \mathfrak{d}(is) \circ k_i.
+  \end{align*}
+\end{defn}
+
+We use the following proposition to construct the patch frame.
+
+\begin{prop}
+  Given a family $K$ of Scott-continuous nuclei, $K^*$ is always a directed
+  family of Scott-continuous prenuclei (i.e.\ a prenucleus is an endofunction
+  satisfying all nuclei laws except idempotence).
+\end{prop}
+
+\begin{defn}[Patch frame over a frame $F$]
+  Let $F$ be a $(\UU, \VV, \WW)$-frame. We define the patch frame on $F$ as
+  follows:
+  \begin{itemize}
+    \item the underlying meet-semilattice is as given in
+      Defn.~\ref{defn:nuclei-semilattice};
+    \item given a family $K :\equiv \{ k_i \}_{i \in I}$ of Scott-continuous nuclei,
+      its join is defined as:
+      \begin{equation*}
+        \bigvee K \quad:\equiv\quad x \mapsto \{ \alpha(x) ~|~ \alpha \in K^* \}.
+      \end{equation*}
+  \end{itemize}
+  The proof of the distributivity law is not straightforward and we omit it.
 \end{defn}
 
 \printbibliography
