@@ -11,8 +11,17 @@ jobs:
         with:
           root_file: patch-frame-note.tex
           latexmk_use_xelatex: true
-      - name: Upload pdf
+      - name: Upload pdf as an artefact
         uses: actions/upload-artifact@v2
         with:
           name: patch-frame-note.pdf
           path: patch-frame-note.pdf
+      - run: mkdir pdf && cp patch-frame-note.pdf pdf
+      - name: Upload pdf on GitHub pages
+        id: deploy
+        if: github.ref == 'refs/heads/master'
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: pdf
