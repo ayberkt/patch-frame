@@ -137,7 +137,18 @@ Nuclei form a meet-semilattice when ordered pointwise.
   Given two nuclei $j$ and $k$ on some frame $F$, the function $x \mapsto j(x) \wedge k(x)$ is a nucleus.
 \end{prop}
 \begin{proof}
-  %% TODO: add the proof.
+  Inflation is direct from the inflation of $j$ and $k$ and the fact that $j(x) \wedge k(x)$ is the GLB
+  of $j(x)$ and $k(x)$. To see that meet-preservation holds, let $x, y : | F |$. We have:
+  \begin{align*}
+    j (x \wedge y) \wedge k (x \wedge y) &\quad=\quad j(x) \wedge j(y) \wedge k(x) \wedge k(y) \\
+                          &\quad=\quad (j(x) \wedge k(x)) \wedge (j(y) \wedge k(y)).
+  \end{align*}
+  For idempotence, let $x : | F |$. We have:
+  \begin{align*}
+    j (j(x) \wedge k(x)) \wedge k(j(x) \wedge k(x)) &\quad\le\quad j(j(x)) \wedge j(k(x)) \wedge k(j(x)) \wedge k(k(x)) \\
+                                     &\quad\le\quad j(j(x)) \wedge k(k(x)) & \\
+                                     &\quad\le\quad j(x) \wedge k(x).
+  \end{align*}
 \end{proof}
 
 The nontrivial part of the patch frame construction is the join of a family $\{ k_i \}_{i : I}$.
