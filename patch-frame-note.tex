@@ -151,6 +151,18 @@ Nuclei form a meet-semilattice when ordered pointwise.
   \end{align*}
 \end{proof}
 
+\begin{defn}\label{defn:sc-nuclei-semilattice}
+  The type of Scott-continuous nuclei on a given frame $(\UU, \VV, \WW)$-frame $F$ forms a
+  meet-semilattice in the same way as in Definition~\ref{defn:nuclei-semilattice}. Its top element
+  is $\top_{\mathcal{N}(F)}$ which is trivially Scott-continuous. It remains only to be shown that the
+  meet of two Scott-continuous nuclei is a Scott-continuous nucleus. Consider two Scott-continuous
+  nuclei $j$ and $k$ on $F$ and a directed family $\{ x_i \}_{i : I} : \mathsf{Fam}_{\WW}(| F |)$.
+  We need to show:
+  \begin{equation*}
+    j \left( \bigvee_{i : I} x_i \right) \wedge k \left( \bigvee_{i : I} x_i \right) = \bigvee_{i : I} j(x_i) \wedge k(x_i)
+  \end{equation*}
+\end{defn}
+
 The nontrivial part of the patch frame construction is the join of a family $\{ k_i \}_{i : I}$.
 Defining it as
 \begin{equation*}
