@@ -19,7 +19,7 @@ jobs:
       - run: mkdir pdf && cp patch-frame-note.pdf pdf
       - name: Upload pdf on GitHub pages
         id: deploy
-        if: github.ref == 'refs/heads/master'
+        if: github.ref == 'refs/heads/main'
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
