@@ -108,6 +108,17 @@ corresponding to $F$.
 
 We write $\mathsf{Nucleus}(F)$ to denote the type of nuclei on a given frame $F$.
 
+\begin{prop}[Nuclei are monotonic]\label{prop:nuclei-mono}
+  Every nucleus is monotonic.
+\end{prop}
+\begin{proof}
+  Let $j : | F | \rightarrow | F |$ be a nucleus on some frame $F$ and let $x, y : | F |$ s.t.\ $x \le y$.
+  We have:
+  \begin{equation*}
+    j(x) = x \wedge j(x) \le x \le y \le j(y).
+  \end{equation*}
+\end{proof}
+
 \begin{prop}
   Given any nucleus $F$, $\mathsf{Nucleus}(F)$ is an h-set.
 \end{prop}
