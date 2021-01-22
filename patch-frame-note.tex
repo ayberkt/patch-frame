@@ -227,7 +227,7 @@ Scott-continuous nuclei. Let us write this a bit more precisely as follows:
   If $is = \mathtt{[\ ]}$, we are done as it is immediate that the identity
   function $\mathsf{id}$ is a prenucleus. If $is = i \cons is'$, we need
   to show that $\mathfrak{d}(is') \circ k_i$ is a prenucleus. For meet-preservation,
-  consider some $x, y : | F |$.
+  consider some $x, y : | F |$. We have that:
   \begin{align*}
     (\mathfrak{d}(is') \circ k_i)(x \wedge y)
       &\quad\equiv\quad \mathfrak{d}(is')(k_i(x \wedge y))\\
@@ -235,6 +235,11 @@ Scott-continuous nuclei. Let us write this a bit more precisely as follows:
       &\quad=\quad \mathfrak{d}(is')(k_i(x)) \wedge \mathfrak{d}(is')(k_i(y)) & [\text{IH}]\\
       &\quad\equiv\quad (\mathfrak{d}(is') \circ k_i)(x) \wedge (\mathfrak{d}(is') \circ k_i)(y).
   \end{align*}
+  For inflation, consider some $x : | F |$. We have that
+  \begin{equation*}
+    x \le k_i(x) \le \mathsf{d}(is')(k_i(x)),
+  \end{equation*}
+  by the inflation $k_i$ and the IH.
 \end{proof}
 
 We use the following proposition to construct the patch frame.
