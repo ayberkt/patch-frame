@@ -114,15 +114,17 @@ If an endofunction satisfies meet-preservation and inflation but not idempotence
 
 We write $\mathsf{Nucleus}(F)$ to denote the type of nuclei on a given frame $F$.
 
-\begin{prop}[Nuclei are monotonic]\label{prop:nuclei-mono}
-  Every nucleus is monotonic.
+\begin{prop}[Prenuclei are monotonic]\label{prop:nuclei-mono}
+  Every prenucleus is monotonic.
 \end{prop}
 \begin{proof}
-  Let $j : | F | \rightarrow | F |$ be a nucleus on some frame $F$ and let $x, y : | F |$ s.t.\ $x \le y$.
+  Let $j : | F | \rightarrow | F |$ be a nucleus on some frame $F$ and let $x, y : | F |$
+  s.t.\ $x \le y$.
   We have:
   \begin{equation*}
-    j(x) = x \wedge j(x) \le x \le y \le j(y).
+    j(x) = j (x \wedge y) = j(x) \wedge j(y) \le j(y),
   \end{equation*}
+  using meet-preservation and the fact that $x \le y \leftrightarrow x \wedge y = x$.
 \end{proof}
 
 \begin{prop}
