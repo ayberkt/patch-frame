@@ -37,6 +37,7 @@
 
 \newcommand{\paren}[1]{\left( #1 \right)}
 \DeclareMathOperator{\cons}{\mathtt{::}}
+\DeclareMathOperator{\append}{\mathtt{++}}
 
 %% Universe notation.
 \newcommand{\UU}{\mathcal{U}}
@@ -109,8 +110,8 @@ corresponding to $F$.
   for every $x, y : | F |$.
 \end{defn}
 
-If an endofunction satisfies meet-preservation and inflation but not idempotence, it is called a
-\emph{prenucleus}.
+If an endofunction satisfies meet-preservation and inflation but not necessarily idempotence, it is
+called a \emph{prenucleus}.
 
 We write $\mathsf{Nucleus}(F)$ to denote the type of nuclei on a given frame $F$.
 
@@ -125,6 +126,14 @@ We write $\mathsf{Nucleus}(F)$ to denote the type of nuclei on a given frame $F$
     j(x) = j (x \wedge y) = j(x) \wedge j(y) \le j(y),
   \end{equation*}
   using meet-preservation and the fact that $x \le y \leftrightarrow x \wedge y = x$.
+\end{proof}
+
+\begin{prop}\label{prop:nucl-lemma-1}
+  Given any two prenuclei $j$ and $k$ on some frame $F$, $j \circ k$ is an upper bound of $\{ j, k \}$.
+\end{prop}
+\begin{proof}
+  Given any $x : | F |$, we have that $k(x) \le j(k(x))$ by the inflation of $j$ and that
+  $j(x) \le j(k(x))$ by the monotonicity of $j$, since $x \le k(x)$ by the inflation of $k$.
 \end{proof}
 
 \begin{prop}
@@ -215,10 +224,21 @@ Scott-continuous nuclei. Let us write this a bit more precisely as follows:
   the family $(\mathsf{List}(I), \mathfrak{d})$ where $\mathfrak{d}$ is defined
   as:
   \begin{align*}
-    \mathfrak{d}(\mathtt{[\ ]})      \quad&:\equiv\quad \mathsf{id}; \\
-    \mathfrak{d}(i \cons is) \quad&:\equiv\quad \mathfrak{d}(is) \circ k_i.
+    \mathfrak{d}(\mathtt{[\ ]})  \quad&:\equiv\quad \mathsf{id}; \\
+    \mathfrak{d}(i \cons is)     \quad&:\equiv\quad \mathfrak{d}(is) \circ k_i.
   \end{align*}
 \end{defn}
+
+\begin{prop}\label{prop:app-lemma}
+  Let $K :\equiv \{ k_i \}_{i : I}$ be a family of prenuclei on a frame $F$. Given
+  any $is, js : \mathsf{List}(I)$,
+  \(
+    \mathfrak{d}(is \append js) = \mathfrak{d}(is) \circ \mathfrak{d}(js).
+  \)
+\end{prop}
+\begin{proof}
+  Straightforward induction, using function extensionality.
+\end{proof}
 
 \begin{prop}
   Given a family $K :\equiv \{ k_i \}_{i : I}$ of nuclei on a $(\UU, \VV, \WW)$-frame
@@ -239,18 +259,41 @@ Scott-continuous nuclei. Let us write this a bit more precisely as follows:
   \end{align*}
   For inflation, consider some $x : | F |$. We have that
   \begin{equation*}
-    x \le k_i(x) \le \mathsf{d}(is')(k_i(x)),
+    x \le k_i(x) \le \mathfrak{d}(is')(k_i(x)),
   \end{equation*}
   by the inflation $k_i$ and the IH.
 \end{proof}
 
-We use the following proposition to construct the patch frame.
+\begin{prop}
+  Given a family $\{ k_i \}_{i : I}$ of Scott-continuous nuclei, every
+  prenucleus $\alpha \in K^*$, is Scott-continuous
+\end{prop}
+\begin{proof}
+  In the base case of $is = \mathtt{[\ ]}$, it is trivial that the identity
+  prenucleus is Scott-continuous. For the case of $is = i \cons is'$, let
+  $\{ x_i \}_{i : I}$ be a directed family on $F$. The result follows equationally
+  as follows:
+  \begin{align*}
+    (\mathfrak{d}(is') \circ k_i) \left(\bigvee_i x_i\right)
+    &\quad\equiv\quad \mathfrak{d}(is')\left(k_i \left( \bigvee_i x_i \right)\right) & \\
+    &\quad=\quad \mathfrak{d}(is')\left(\bigvee_{i : I} \left( k_i(x_i) \right)\right) & [\text{Scott-continuity of $k_i$}]\\
+    &\quad=\quad \bigvee_{i : I} \mathfrak{d}(is')(k_i(x_i)) & [\text{IH}].
+  \end{align*}
+  Note that to be able to appeal to the IH, it must be shown that
+  $\{ k_i(x_i) \}_{i : I}$ is a directed family which follows from \textbf{TODO}.
+\end{proof}
 
 \begin{prop}
-  Given a family $K$ of Scott-continuous nuclei, $K^*$ is always a directed
-  family of Scott-continuous prenuclei (i.e.\ a prenucleus is an endofunction
-  satisfying all nuclei laws except idempotence).
+  Given a family $K :\equiv \{ k_i \}_{i : I}$ of nuclei (on some frame $F$), $K^*$
+  is a directed family.
 \end{prop}
+\begin{proof}
+  $K^*$ is always inhabited by $\mathfrak{d}(\mathtt{[\ ]})$. Upwards-closure also holds since,
+  given $is, js : \mathsf{List}(I)$, $\mathfrak{d}(is \append js)$ is the upper bound of $\{
+  \mathfrak{d}(is), \mathfrak{d}(js) \}$: $\mathfrak{d}(is \append js) = \mathfrak{d}(is) \circ
+  \mathfrak{d}(js)$ (by Proposition~\ref{prop:app-lemma}) which is the upper bound of $\{
+  \mathfrak{d}(is), \mathfrak{d}(js) \}$ by Proposition~\ref{prop:nucl-lemma-1}.
+\end{proof}
 
 \begin{defn}[Patch frame over a frame $F$]
   Let $F$ be a $(\UU, \VV, \WW)$-frame. We define the patch frame on $F$ as
