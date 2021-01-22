@@ -36,6 +36,7 @@
 \newtheorem{example}{Example}
 
 \newcommand{\paren}[1]{\left( #1 \right)}
+\DeclareMathOperator{\cons}{\mathtt{::}}
 
 %% Universe notation.
 \newcommand{\UU}{\mathcal{U}}
@@ -210,7 +211,7 @@ nuclei. Let us write this a bit more precisely as follows:
   as:
   \begin{align*}
     \mathfrak{d}(\mathtt{[\ ]})      \quad&:\equiv\quad \mathsf{id}; \\
-    \mathfrak{d}(i\ \mathtt{::}\ is) \quad&:\equiv\quad \mathfrak{d}(is) \circ k_i.
+    \mathfrak{d}(i \cons is) \quad&:\equiv\quad \mathfrak{d}(is) \circ k_i.
   \end{align*}
 \end{defn}
 
