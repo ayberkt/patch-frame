@@ -186,23 +186,26 @@ We denote this $\mathcal{N}(F)$.
     &= \bigvee_{(i, j) : I \times I} j(x_i) \wedge k(x_i) & [\text{distributivity}]\\
     &= \bigvee_{i : I} j(x_i) \wedge k(x_i) & [\text{\dag}]
   \end{align*}
-  For the \dag\ step, we use antisymmetry. The backwards direction is immediate whereas the forwards
-  direction, follows from the monotonicity of nuclei.
+  where, for the \dag\ step, we use antisymmetry. The backwards direction is immediate whereas the
+  forwards direction follows, essentially, from the monotonicity of nuclei
+  (Proposition~\ref{prop:nuclei-mono}). We omit the details.
 \end{defn}
 
-The nontrivial part of the patch frame construction is the join of a family $\{ k_i \}_{i : I}$.
-Defining it as
+\section{Joins}
+
+The nontrivial part of the patch frame construction is the join of a family $\{ k_i \}_{i : I}$ of
+Scott-continuous nuclei as defining it pointwise,
 \begin{equation*}
-  \bigvee_i k_i \quad:\equiv\quad x \mapsto \bigvee_{i \in I} k_i(x)
+  \bigvee_{i : I} k_i \quad:\equiv\quad x \mapsto \bigvee_{i : I} k_i(x),
 \end{equation*}
-does not work as it is not idempotent and hence not a nucleus. The construction I have formalised
-(due to Escard\'{o}~\cite{properly-injective}) is based on the idea that, if we start with a family
-$\{ k_i \}_{i \in I}$ of nuclei, we can consider the family
+does not work. The problem is that this is not idempotent and hence not a nucleus. Our construction
+(that follows Escard\'{o}~\cite{properly-injective}) is based on the idea that, if we start with a
+family $\{ k_i \}_{i : I}$ of nuclei, we can consider the family
 \begin{equation*}
   \left\{ k_{i_0} \circ \cdots \circ k_{i_n} \right\}_{(i_0, \cdots, i_n) : \mathsf{List}(I)},
 \end{equation*}
-which will always be directed. However, this works only on Scott-continuous
-nuclei. Let us write this a bit more precisely as follows:
+which will always be directed. However, in a predicative setting, this works only on
+Scott-continuous nuclei. Let us write this a bit more precisely as follows:
 
 \begin{defn}
   Let $K :\equiv \{ k_i \}_{i \in I}$ be a family of nuclei on a given
