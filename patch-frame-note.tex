@@ -218,6 +218,25 @@ Scott-continuous nuclei. Let us write this a bit more precisely as follows:
   \end{align*}
 \end{defn}
 
+\begin{prop}
+  Given a family $K :\equiv \{ k_i \}_{i : I}$ of nuclei on a $(\UU, \VV, \WW)$-frame
+  $F$, every $\alpha \in K^*$ is a prenucleus, that is, for every
+  $is : \mathsf{List}(I)$, $\mathfrak{d}(is)$ is a prenucleus
+\end{prop}
+\begin{proof}
+  If $is = \mathtt{[\ ]}$, we are done as it is immediate that the identity
+  function $\mathsf{id}$ is a prenucleus. If $is = i \cons is'$, we need
+  to show that $\mathfrak{d}(is') \circ k_i$ is a prenucleus. For meet-preservation,
+  consider some $x, y : | F |$.
+  \begin{align*}
+    (\mathfrak{d}(is') \circ k_i)(x \wedge y)
+      &\quad\equiv\quad \mathfrak{d}(is')(k_i(x \wedge y))\\
+      &\quad=\quad \mathfrak{d}(is')(k_i(x) \wedge k_i(y)) & [\text{$k_i$ is a nucleus}]\\
+      &\quad=\quad \mathfrak{d}(is')(k_i(x)) \wedge \mathfrak{d}(is')(k_i(y)) & [\text{IH}]\\
+      &\quad\equiv\quad (\mathfrak{d}(is') \circ k_i)(x) \wedge (\mathfrak{d}(is') \circ k_i)(y).
+  \end{align*}
+\end{proof}
+
 We use the following proposition to construct the patch frame.
 
 \begin{prop}
