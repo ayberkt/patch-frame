@@ -36,8 +36,10 @@
 \newtheorem{example}{Example}
 
 \newcommand{\paren}[1]{\left( #1 \right)}
-\DeclareMathOperator{\cons}{\mathtt{::}}
-\DeclareMathOperator{\append}{\mathtt{++}}
+\newcommand{\is}{\vcentcolon\equiv}
+\DeclareMathOperator{\emptyl}{\text{\texttt{[]}}}
+\DeclareMathOperator{\cons}{\text{\texttt{::}}}
+\DeclareMathOperator{\append}{\text{\texttt{++}}}
 
 %% Universe notation.
 \newcommand{\UU}{\mathcal{U}}
@@ -293,6 +295,38 @@ Scott-continuous nuclei. Let us write this a bit more precisely as follows:
   \mathfrak{d}(is), \mathfrak{d}(js) \}$: $\mathfrak{d}(is \append js) = \mathfrak{d}(is) \circ
   \mathfrak{d}(js)$ (by Proposition~\ref{prop:app-lemma}) which is the upper bound of $\{
   \mathfrak{d}(is), \mathfrak{d}(js) \}$ by Proposition~\ref{prop:nucl-lemma-1}.
+\end{proof}
+
+To be able to define the patch frame on $F$, we will also need some lemmas about nuclei in general.
+
+\begin{prop}
+  Given a nucleus $j$ on some frame $F$ and a family $K \is \{ k_i \}_{i : I}$ of nuclei on $F$, if
+  we denote by $L$ the set $\{ j \wedge k ~|~ k \in K \}$, we have that $L^*_{is}$ is a lower bound of
+  $\{ K^*_{is}, j \}$.
+\end{prop}
+\begin{proof}
+  Let $is : \mathsf{List}(I)$ and $x : | F |$. In the base case of $is \equiv \emptyl$, we are done
+  as both sides of the inequality reduce to the application of $\mathsf{id}(x)$. If we have
+  $is \equiv i \append is'$, we have that
+  \begin{align*}
+    L^*_{i \cons is'}(x)
+      \quad\equiv\quad L^*_{is'}(L_i(x))
+     &\quad\equiv\quad L^*_{is'}(j(x) \wedge k_i(x)) \\
+     &\quad\le\quad K^*_{is'}(j(x) \wedge k_i(x)) & [\text{IH}] \\
+     &\quad\le\quad K^*_{is'}(j(x)) \wedge K^*_{is'}(k_i(x)) & [K^*_{is'}\ \text{is a prenucleus}] \\
+     &\quad\le\quad K^*_{is'}(k_i(x)),
+  \end{align*}
+  and that
+  \begin{align*}
+    L^*_{i \cons is'}(x)
+    \quad\equiv\quad L^*_{is'}(L_i(x)) 
+    &\quad\equiv\quad L^*_{is'}(j(x) \wedge k_i(x)) & \\
+    &\quad\le\quad j(j(x) \wedge k_i(x)) & [\text{IH}] \\
+    &\quad\le\quad j(j(x)) \wedge j(k_i(x)) & [\text{$j$ preserves meets}]\\
+    &\quad\le\quad j(j(x)) & \\
+    &\quad=\quad j(x), & [\text{$j$ is idempotent}]
+  \end{align*}
+  which is to say $L^*_{i \cons is'}(x)$ is lower than both of $K^*_{i \cons is'}(x)$ and $j(x)$.
 \end{proof}
 
 \begin{defn}[Patch frame over a frame $F$]
