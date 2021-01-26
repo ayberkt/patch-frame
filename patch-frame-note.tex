@@ -46,6 +46,7 @@
 \newtheorem{example}{Example}
 
 \newcommand{\paren}[1]{\left( #1 \right)}
+\newcommand{\setof}[1]{\left\{ #1 \right\}}
 \newcommand{\is}{\vcentcolon\equiv}
 \DeclareMathOperator{\emptyl}{\text{\texttt{[]}}}
 \DeclareMathOperator{\cons}{\text{\texttt{::}}}
@@ -340,6 +341,39 @@ To be able to define the patch frame on $F$, we will also need some lemmas about
   \end{align*}
   which is to say $L^*_{i \cons is'}(x)$ is lower than both of $K^*_{i \cons is'}(x)$ and $j(x)$.
 \end{proof}
+
+\begin{defn}[Join of a family of Scott-continuous nuclei]
+  Let $K \is \{ k_i \}_{i : I}$ be a family of Scott-continuous nuclei. Its join is given by
+  the operation $\bigvee^N$ defined as:
+  \begin{equation*}
+    \bigvee^N_{i} k_i \quad\is\quad x \mapsto \bigvee^F \left\{ \alpha(x) ~|~ \alpha \in K^* \right\}.
+  \end{equation*}
+  We need to show that $\bigvee^N_{i} k_i$ is
+    (a) a nucleus,
+    (b) Scott-continuous, and
+    (c) the LUB of $K$.
+
+  \paragraph{(a).} Inflation is direct. For meet-preservation, consider some $x, y : | F |$. We have:
+  \begin{align*}
+    \left(\bigvee^N_{i} k_i\right)(x)
+    &\quad\equiv\quad \bigvee^F \left\{ \alpha(x \wedge y) ~|~ \alpha \in K^* \right\} \\
+    &\quad=\quad \bigvee^F \left\{ \alpha(x) \wedge \alpha(y) ~|~ \alpha \in K^* \right\}
+          & [\text{$\alpha$ is a prenucleus}] \\
+    &\quad=\quad \bigvee^F \left\{ \alpha(x) \wedge \beta(y) ~|~ \alpha, \beta \in K^* \right\}
+          & [\text{\todo{complete}}] \\
+    &\quad=\quad \paren{\bigvee^F \setof{ \alpha(x) ~|~ \alpha \in K^* }} \wedge \paren{\bigvee^F \setof{ \beta(y) ~|~ \beta \in K^* }}
+          & [\text{distributivity}] \\
+    &\quad\equiv\quad \paren{\bigvee^N_i k_i}(x) \wedge \paren{\bigvee^N_i k_i}(y).
+  \end{align*}
+  For idempotence, let $x : | F |$. We have that:
+  \begin{align*}
+    \left(\bigvee^N_{i} k_i\right)\left(\left(\bigvee^N_{i} k_i\right)(x)\right)
+    &\quad\equiv\quad \bigvee^F \setof{ \bigvee^F \setof{ \alpha(\beta(x)) ~|~ \beta \in K^* } ~|~ \alpha \in K^* } \\
+    &\quad\le\quad \bigvee^F \setof{ \alpha(\beta(x)) ~|~ \alpha, \beta \in K^* } & [\text{\todo{explain}}]\\
+    &\quad\le\quad \bigvee^F \setof{ \alpha(x) ~|~ \alpha \in K^* } & [\text{\todo{explain}}]\\
+    &\quad\equiv\quad \paren{\bigvee^N_i k_i}(x).
+  \end{align*}
+\end{defn}
 
 \begin{defn}[Patch frame over a frame $F$]
   Let $F$ be a $(\UU, \VV, \WW)$-frame. We define the patch frame on $F$ as
