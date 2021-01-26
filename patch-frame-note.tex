@@ -234,10 +234,8 @@ which will always be directed. However, in a predicative setting, this works onl
 Scott-continuous nuclei. Let us write this a bit more precisely as follows:
 
 \begin{defn}
-  Let $K :\equiv \{ k_i \}_{i \in I}$ be a family of nuclei on a given
-  $(\UU, \VV, \WW)$-frame $F$. We define $K^*$ as
-  the family $(\mathsf{List}(I), \mathfrak{d})$ where $\mathfrak{d}$ is defined
-  as:
+  Let $K :\equiv \{ k_i \}_{i \in I}$ be a family of nuclei on a given $(\UU, \VV, \WW)$-frame $F$. We
+  define $K^*$ as the family $(\mathsf{List}(I), \mathfrak{d})$ where $\mathfrak{d}$ is defined as:
   \begin{align*}
     \mathfrak{d}(\mathtt{[\ ]})  \quad&:\equiv\quad \mathsf{id}; \\
     \mathfrak{d}(i \cons is)     \quad&:\equiv\quad \mathfrak{d}(is) \circ k_i.
@@ -255,7 +253,7 @@ Scott-continuous nuclei. Let us write this a bit more precisely as follows:
   Straightforward induction, using function extensionality.
 \end{proof}
 
-\begin{prop}
+\begin{prop}\label{prop:star-prenucleus}
   Given a family $K :\equiv \{ k_i \}_{i : I}$ of nuclei on a $(\UU, \VV, \WW)$-frame
   $F$, every $\alpha \in K^*$ is a prenucleus, that is, for every
   $is : \mathsf{List}(I)$, $\mathfrak{d}(is)$ is a prenucleus
@@ -277,6 +275,21 @@ Scott-continuous nuclei. Let us write this a bit more precisely as follows:
     x \le k_i(x) \le \mathfrak{d}(is')(k_i(x)),
   \end{equation*}
   by the inflation $k_i$ and the IH.
+\end{proof}
+
+\begin{prop}\label{prop:star-ub}
+  Given a nucleus $j$ and a family $K \is \{ k_i \}_{i : I}$ of nuclei on some frame $F$, if $j$ is
+  an upper bound of $K$ then $j$ is an upper bound of $K^*$.
+\end{prop}
+\begin{proof}
+  Let $is : \mathsf{List}(I)$. If $is = \emptyl$, we have that $\mathsf{id}(x) \equiv x \le j(x)$.
+  If $is = i \cons is'$, then we have
+  \begin{align*}
+       K^*_{is'}(K_i(x))
+  \quad&\le\quad K^*_{is'}(j(x)) & [\text{monotonicity of $K^*_{is'}$ (Prop.~\ref{prop:star-prenucleus} and Prop.~\ref{prop:nuclei-mono})}] \\
+  \quad&\le\quad j(j(x))        & [\text{IH}] \\
+  \quad&\le\quad j(x).          & [\text{idempotence of $j$}]
+  \end{align*}
 \end{proof}
 
 \begin{prop}
@@ -373,6 +386,23 @@ To be able to define the patch frame on $F$, we will also need some lemmas about
     &\quad\le\quad \bigvee^F \setof{ \alpha(x) ~|~ \alpha \in K^* } & [\text{\todo{explain}}]\\
     &\quad\equiv\quad \paren{\bigvee^N_i k_i}(x).
   \end{align*}
+
+  \paragraph{(b).} Let $U \is \{ x_j \}_{j : J}$ be a directed family over $| F |$. The result follows
+  as:
+  \begin{align*}
+       \bigvee^F \setof{ \alpha\left(\bigvee^F_j x_j\right) ~|~ \alpha \in K^* }
+  &\quad=\quad \bigvee^F \setof{ \bigvee^F \setof{ \alpha(x_j) ~|~ x_j \in U } ~|~ \alpha \in K^* }  & [\text{Scott-continuity of $\alpha$}] \\
+  &\quad=\quad \bigvee^F \setof{ \bigvee^F \setof{ \alpha(x_j) ~|~ \alpha : K^* } ~|~ x_j \in U }. & [\text{joins commute}]          \\
+  \end{align*}
+
+  \paragraph{(c).} The fact that $\bigvee^N_i k_i$ is an upper bound of $K$ is easy to verify:
+  given some $k_i$ and $x : | F |$, $k_i(x) \in \{ \alpha(x) ~|~ \alpha \in K^* \}$ since $k_i \in K^*$. To see that
+  it is \emph{the least} upper bound, consider a Scott-continuous nucleus $j$ that is an upper bound
+  of $K$. Let $x : | F |$. We need to show that $\left(\bigvee^N_i k_i\right)(x) \le j(x)$. We know by
+  Proposition~\ref{prop:star-ub} that $j$ is an upper bound of $K^*$, since it is an upper bound of
+  $K$, which is to say $K^*_{is}(x) \le j(x)$ for every $is : \mathsf{List}(I)$ i.e.~ $j(x)$ is an
+  upper bound of the family $\setof{ \alpha(x) ~|~ \alpha \in K^* }$. Since $\left(\bigvee^N_i k_i\right)(x)$ is the
+  least upper bound of this family by definition, it follows that it is below $j(x)$.
 \end{defn}
 
 \begin{defn}[Patch frame over a frame $F$]
