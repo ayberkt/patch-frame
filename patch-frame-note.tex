@@ -120,12 +120,12 @@ corresponding to $F$.
   \begin{itemize}
     \item (meet-preservation) $j(x \wedge y) = j(x) \wedge j(y)$;
     \item (inflation) $x \le j(x)$; and
-    \item (idempotence) $j(j(x)) \le j(x)$.
+    \item (idempotency) $j(j(x)) \le j(x)$.
   \end{itemize}
   for every $x, y : | F |$.
 \end{defn}
 
-If an endofunction satisfies meet-preservation and inflation but not necessarily idempotence, it is
+If an endofunction satisfies meet-preservation and inflation but not necessarily idempotency, it is
 called a \emph{prenucleus}.
 
 We write $\mathsf{Nucleus}(F)$ to denote the type of nuclei on a given frame $F$.
@@ -190,7 +190,7 @@ We denote this $\mathcal{N}(F)$.
     j (x \wedge y) \wedge k (x \wedge y) &\quad=\quad j(x) \wedge j(y) \wedge k(x) \wedge k(y) \\
                           &\quad=\quad (j(x) \wedge k(x)) \wedge (j(y) \wedge k(y)).
   \end{align*}
-  For idempotence, let $x : | F |$. We have:
+  For idempotency, let $x : | F |$. We have:
   \begin{align*}
     j (j(x) \wedge k(x)) \wedge k(j(x) \wedge k(x)) &\quad\le\quad j(j(x)) \wedge j(k(x)) \wedge k(j(x)) \wedge k(k(x)) \\
                                      &\quad\le\quad j(j(x)) \wedge k(k(x)) & \\
@@ -288,7 +288,7 @@ Scott-continuous nuclei. Let us write this a bit more precisely as follows:
        K^*_{is'}(K_i(x))
   \quad&\le\quad K^*_{is'}(j(x)) & [\text{monotonicity of $K^*_{is'}$ (Prop.~\ref{prop:star-prenucleus} and Prop.~\ref{prop:nuclei-mono})}] \\
   \quad&\le\quad j(j(x))        & [\text{IH}] \\
-  \quad&\le\quad j(x).          & [\text{idempotence of $j$}]
+  \quad&\le\quad j(x).          & [\text{idempotency of $j$}]
   \end{align*}
 \end{proof}
 
@@ -378,7 +378,7 @@ To be able to define the patch frame on $F$, we will also need some lemmas about
           & [\text{distributivity}] \\
     &\quad\equiv\quad \paren{\bigvee^N_i k_i}(x) \wedge \paren{\bigvee^N_i k_i}(y).
   \end{align*}
-  For idempotence, let $x : | F |$. We have that:
+  For idempotency, let $x : | F |$. We have that:
   \begin{align*}
     \left(\bigvee^N_{i} k_i\right)\left(\left(\bigvee^N_{i} k_i\right)(x)\right)
     &\quad\equiv\quad \bigvee^F \setof{ \bigvee^F \setof{ \alpha(\beta(x)) ~|~ \beta \in K^* } ~|~ \alpha \in K^* } \\
