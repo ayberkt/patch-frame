@@ -157,10 +157,10 @@ We write $\mathsf{Nucleus}(F)$ to denote the type of nuclei on a given frame $F$
 
 \begin{defn}[Scott-continuity]
   A function $f : | F | \rightarrow | G | $ from a $(\UU, \VV, \WW)$-frame $F$ to a $(\UU, \VV, \WW)$-frame
-  $G$ is called \emph{Scott-continuous} iff given any \emph{directed}
-  $\{ x_i \}~:~\mathsf{Fam}_{\WW}(| F |)$,
+  $G$ is called \define{Scott-continuous} iff given any \emph{directed}
+  $\{ x_i \}_{i : I} : \Fam{\WW}{| F |}$,
   \begin{equation*}
-    f\left(\bigvee^F_{i : I} x_i\right) = \bigvee^G_{i : I} f(x_i).
+    f\left(\bigvee_{i : I} x_i\right) = \bigvee_{i : I} f(x_i).
   \end{equation*}
 \end{defn}
 
