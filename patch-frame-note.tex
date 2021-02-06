@@ -98,10 +98,10 @@ convention of using universe variables of $\UU$, $\VV$, and $\WW$ for these resp
     \item an h-set $| F | : \UU$,
     \item a partial order $\_\le\_\ :\ | F | \rightarrow \Omega_\VV$,
     \item a top element $\top : | F |$,
-    \item a meet operation i.e.\ an operation $\_\wedge\_\ :\ | F | \rightarrow | F | \rightarrow | F |$
-      such that $x \wedge y$ is the GLB of $x$ and $y$ for every $x, y : | F |$, and
+    \item a meet operation i.e.\ an operation $\_\wedge\_\ :\ | F | \rightarrow | F | \rightarrow | F |$ such that $x \wedge y$ is
+      the greatest lower bound of $x$ and $y$ for every $x, y : | F |$, and
     \item a join operation i.e.\ an operation $\bigvee\_ : \mathsf{Fam}_{\WW}(| F |) \rightarrow
-      | F |$ such that given a family $\{ x_i \}_{i \in I}$, $\bigvee_i x_i$ is the LUB
+      | F |$ such that given a family $\{ x_i \}_{i \in I}$, $\bigvee_i x_i$ is the least upper bound
       of $\{ x_i \}_{i \in I}$,
   \end{itemize}
   such that binary meets distribute over arbitrary joins:
@@ -184,8 +184,9 @@ We denote this $\mathcal{N}(F)$.
   Given two nuclei $j$ and $k$ on some frame $F$, the function $x \mapsto j(x) \wedge k(x)$ is a nucleus.
 \end{prop}
 \begin{proof}
-  Inflation is direct from the inflation of $j$ and $k$ and the fact that $j(x) \wedge k(x)$ is the GLB
-  of $j(x)$ and $k(x)$. To see that meet-preservation holds, let $x, y : | F |$. We have:
+  Inflation is direct from the inflation of $j$ and $k$ and the fact that $j(x) \wedge k(x)$ is the
+  greatest lower bound of $j(x)$ and $k(x)$. To see that meet-preservation holds, let
+  $x, y : | F |$. We have:
   \begin{align*}
     j (x \wedge y) \wedge k (x \wedge y) &\quad=\quad j(x) \wedge j(y) \wedge k(x) \wedge k(y) \\
                           &\quad=\quad (j(x) \wedge k(x)) \wedge (j(y) \wedge k(y)).
@@ -364,7 +365,7 @@ To be able to define the patch frame on $F$, we will also need some lemmas about
   We need to show that $\bigvee^N_{i} k_i$ is
     (a) a nucleus,
     (b) Scott-continuous, and
-    (c) the LUB of $K$.
+    (c) the least upper bound of $K$.
 
   \paragraph{(a).} Inflation is direct. For meet-preservation, consider some $x, y : | F |$. We have:
   \begin{align*}
