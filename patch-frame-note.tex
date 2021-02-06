@@ -147,8 +147,8 @@ We write $\mathsf{Nucleus}(F)$ to denote the type of nuclei on a given frame $F$
   Given any two prenuclei $j$ and $k$ on some frame $F$, $j \circ k$ is an upper bound of $\{ j, k \}$.
 \end{prop}
 \begin{proof}
-  Given any $x : | F |$, we have that $k(x) \le j(k(x))$ by the inflation of $j$ and that
-  $j(x) \le j(k(x))$ by the monotonicity of $j$, since $x \le k(x)$ by the inflation of $k$.
+  Given any $x : | F |$, we have that $k(x) \le j(k(x))$ by the inflation property of $j$ and that
+  $j(x) \le j(k(x))$ by the monotonicity of $j$, since $x \le k(x)$ by the inflation property of $k$.
 \end{proof}
 
 \begin{prop}
@@ -184,9 +184,9 @@ We denote this $\mathcal{N}(F)$.
   Given two nuclei $j$ and $k$ on some frame $F$, the function $x \mapsto j(x) \wedge k(x)$ is a nucleus.
 \end{prop}
 \begin{proof}
-  Inflation is direct from the inflation of $j$ and $k$ and the fact that $j(x) \wedge k(x)$ is the
-  greatest lower bound of $j(x)$ and $k(x)$. To see that meet-preservation holds, let
-  $x, y : | F |$. We have:
+  The inflation property can be seen to be satisfied from the inflation property of $j$ and $k$ and
+  the fact that $j(x) \wedge k(x)$ is the greatest lower bound of $j(x)$ and $k(x)$. To see that meet
+  preservation holds, let $x, y : | F |$. We have:
   \begin{align*}
     j (x \wedge y) \wedge k (x \wedge y) &\quad=\quad j(x) \wedge j(y) \wedge k(x) \wedge k(y) \\
                           &\quad=\quad (j(x) \wedge k(x)) \wedge (j(y) \wedge k(y)).
