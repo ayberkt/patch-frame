@@ -118,15 +118,15 @@ the locale corresponding to frame $F$.
   A nucleus on a $(\UU, \VV, \WW)$-frame $F$ is an endofunction
   $j : | F | \rightarrow | F |$ satisfying:
   \begin{itemize}
-    \item (meet-preservation) $j(x \wedge y) = j(x) \wedge j(y)$;
+    \item (meet preservation) $j(x \wedge y) = j(x) \wedge j(y)$;
     \item (inflation) $x \le j(x)$; and
     \item (idempotency) $j(j(x)) \le j(x)$.
   \end{itemize}
   for every $x, y : | F |$.
 \end{defn}
 
-If an endofunction satisfies meet-preservation and inflation but not necessarily idempotency, it is
-called a \emph{prenucleus}.
+If an endofunction satisfies meet preservation and the inflation property but not necessarily
+idempotency, it is called a \emph{prenucleus}.
 
 We write $\mathsf{Nucleus}(F)$ to denote the type of nuclei on a given frame $F$.
 
@@ -140,7 +140,7 @@ We write $\mathsf{Nucleus}(F)$ to denote the type of nuclei on a given frame $F$
   \begin{equation*}
     j(x) = j (x \wedge y) = j(x) \wedge j(y) \le j(y),
   \end{equation*}
-  using meet-preservation and the fact that $x \le y \leftrightarrow x \wedge y = x$.
+  using meet preservation and the fact that $x \le y \leftrightarrow x \wedge y = x$.
 \end{proof}
 
 \begin{prop}\label{prop:nucl-lemma-1}
@@ -262,7 +262,7 @@ Scott-continuous nuclei. Let us write this a bit more precisely as follows:
 \begin{proof}
   If $is = \mathtt{[\ ]}$, we are done as it is immediate that the identity
   function $\mathsf{id}$ is a prenucleus. If $is = i \cons is'$, we need
-  to show that $\mathfrak{d}(is') \circ k_i$ is a prenucleus. For meet-preservation,
+  to show that $\mathfrak{d}(is') \circ k_i$ is a prenucleus. For meet preservation,
   consider some $x, y : | F |$. We have that:
   \begin{align*}
     (\mathfrak{d}(is') \circ k_i)(x \wedge y)
@@ -367,7 +367,7 @@ To be able to define the patch frame on $F$, we will also need some lemmas about
     (b) Scott-continuous, and
     (c) the least upper bound of $K$.
 
-  \paragraph{(a).} Inflation is direct. For meet-preservation, consider some $x, y : | F |$. We have:
+  \paragraph{(a).} Inflation is direct. For meet preservation, consider some $x, y : | F |$. We have:
   \begin{align*}
     \left(\bigvee^N_{i} k_i\right)(x)
     &\quad\equiv\quad \bigvee^F \left\{ \alpha(x \wedge y) ~|~ \alpha \in K^* \right\} \\
