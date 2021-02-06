@@ -78,13 +78,8 @@
 \section{Preliminaries}
 
 \begin{defn}[Family]
-  A ``$\UU$-family on type $A$'' is\footnote{%
-    It would be reasonable to require $I$ to be an h-set and $f$ to be injective but we are
-    providing a direct translation of the definition in our formalisation. This definition might
-    have to be updated with these requirements.
-  }
-  simply a pair $(I, f)$ where $I : \UU$ and $f : I \rightarrow A$. We denote the type of
-  $\UU$-families by $\mathsf{Fam}$ i.e.\ $\mathsf{Fam}_{\UU}(A) :\equiv \Sigma_{(I : \UU)} I \rightarrow A$.
+  A \define{$\UU$-family on a type} $A$ is a pair $(I, f)$ where $I : \UU$ and $f : I \rightarrow A$. We
+  denote the type of $\UU$-families by $\mathsf{Fam}$ i.e.\ $\Fam{\UU}{A} :\equiv \Sigma_{(I : \UU)} I \rightarrow A$.
 \end{defn}
 
 \begin{defn}[Directed family]
