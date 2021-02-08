@@ -394,13 +394,13 @@ To be able to define the patch frame on $F$, we will also need some lemmas about
     &\quad\equiv\quad \paren{\bigvee^N_i k_i}(x).
   \end{align*}
 
-  \paragraph{(b).} Let $U \is \{ x_j \}_{j : J}$ be a directed family over $| F |$. The result follows
-  as:
+  \paragraph{(b).} Let $U \is \{ x_j \}_{j : J}$ be a directed family over $| F |$. Then
   \begin{align*}
        \bigvee \setof{ \alpha\left(\bigvee_j x_j\right) ~|~ \alpha \in K^* }
   &\quad=\quad \bigvee \setof{ \bigvee \setof{ \alpha(x_j) ~|~ x_j \in U } ~|~ \alpha \in K^* }  & [\text{Scott-continuity of $\alpha$}] \\
-  &\quad=\quad \bigvee \setof{ \bigvee \setof{ \alpha(x_j) ~|~ \alpha : K^* } ~|~ x_j \in U }. & [\text{joins commute}]          \\
+  &\quad=\quad \bigvee \setof{ \bigvee \setof{ \alpha(x_j) ~|~ \alpha : K^* } ~|~ x_j \in U }, & [\text{joins commute}]           \\
   \end{align*}
+  as required.
 
   \paragraph{(c).} The fact that $\bigvee^N_i k_i$ is an upper bound of $K$ is easy to verify:
   given some $k_i$ and $x : | F |$, $k_i(x) \in \{ \alpha(x) ~|~ \alpha \in K^* \}$ since $k_i \in K^*$. To see that
