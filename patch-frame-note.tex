@@ -48,9 +48,9 @@
 \newcommand{\paren}[1]{\left( #1 \right)}
 \newcommand{\setof}[1]{\left\{ #1 \right\}}
 \newcommand{\is}{\vcentcolon\equiv}
-\DeclareMathOperator{\emptyl}{\text{\texttt{[]}}}
-\DeclareMathOperator{\cons}{\text{\texttt{::}}}
-\DeclareMathOperator{\append}{\text{\texttt{++}}}
+\DeclareMathOperator{\emptyl}{\epsilon}
+\DeclareMathOperator{\cons}{\colon\kern-1.1ex\colon\kern-0.4ex}
+\DeclareMathOperator{\append}{\,}
 
 %% Universe notation.
 \newcommand{\UU}{\mathcal{U}}
@@ -237,13 +237,17 @@ family $\{ k_i \}_{i : I}$ of nuclei, we can consider the family
 which will always be directed. However, in a predicative setting, this works only on
 Scott-continuous nuclei. Let us write this a bit more precisely as follows:
 
+Before we proceed with the construction, let us note that we use the following notation for lists:
+the empty list is denoted $\emptyl$, prepending an element $x$ onto some list $xs$ is denoted $x
+\cons xs$, and the appending of $ys$ to the end of $xs$ is denoted $xs \append ys$.
+
 \begin{defn}
   Given a family $K :\equiv \{ k_i \}_{i \in I}$ of nuclei on a given $(\UU, \VV, \WW)$-frame $F$, we
   define \define{$K^*$} as the family $(\mathsf{List}(I), \mathfrak{d})$ where $\mathfrak{d}$ is
   defined as:
   \begin{align*}
-    \dd{\mathtt{[\ ]}}  \quad&:\equiv\quad \mathsf{id}; \\
-    \dd{i \cons is}     \quad&:\equiv\quad \dd{is} \circ k_i.
+    \dd{\emptyl}    \quad&:\equiv\quad \mathsf{id};  \\
+    \dd{i \cons is} \quad&:\equiv\quad \dd{is} \circ k_i.
   \end{align*}
 \end{defn}
 
@@ -264,10 +268,9 @@ Scott-continuous nuclei. Let us write this a bit more precisely as follows:
   is a prenucleus
 \end{prop}
 \begin{proof}
-  If $is = \mathtt{[\ ]}$, we are done as it is immediate that the identity
-  function $\mathsf{id}$ is a prenucleus. If $is = i \cons is'$, we need
-  to show that $\dd{is'} \circ k_i$ is a prenucleus. For meet preservation,
-  consider some $x, y : | F |$. We have that:
+  If $is = \emptyl$, we are done as it is immediate that the identity function $\mathsf{id}$ is a
+  prenucleus. If $is = i \cons is'$, we need to show that $\dd{is'} \circ k_i$ is a prenucleus. For meet
+  preservation, consider some $x, y : | F |$. We have that:
   \begin{align*}
     (\dd{is'} \circ k_i)(x \wedge y)
       &\quad\equiv\quad \dd{is'}(k_i(x \wedge y))                                                       \\
@@ -302,7 +305,7 @@ Scott-continuous nuclei. Let us write this a bit more precisely as follows:
   prenucleus $\alpha \in K^*$, is Scott-continuous
 \end{prop}
 \begin{proof}
-  In the base case of $is = \mathtt{[\ ]}$, it is trivial that the identity
+  In the base case of $is = \emptyl$, it is trivial that the identity
   prenucleus is Scott-continuous. For the case of $is = i \cons is'$, let
   $\{ x_i \}_{i : I}$ be a directed family on $F$. The result follows equationally
   as follows:
@@ -320,11 +323,10 @@ Scott-continuous nuclei. Let us write this a bit more precisely as follows:
   Given a family $K :\equiv \{ k_i \}_{i : I}$ of nuclei on some frame $F$, the family $K^*$ is directed.
 \end{prop}
 \begin{proof}
-  $K^*$ is always inhabited by $\dd{\mathtt{[\ ]}}$. Upwards-closure also holds since,
-  given $is, js : \mathsf{List}(I)$, $\dd{is \append js}$ is the upper bound of $\{
-  \dd{is}, \dd{js} \}$: $\dd{is \append js} = \dd{is} \circ
-  \dd{js}$ (by Proposition~\ref{prop:app-lemma}) which is the upper bound of $\{
-  \dd{is}, \dd{js} \}$ by Proposition~\ref{prop:nucl-lemma-1}.
+  $K^*$ is always inhabited by $\dd{\emptyl}$. Upwards-closure also holds since,
+  given $is, js : \mathsf{List}(I)$, $\dd{is \append js}$ is the upper bound of $\{ \dd{is}, \dd{js}
+  \}$: $\dd{is \append js} = \dd{is} \circ \dd{js}$ (by Proposition~\ref{prop:app-lemma}) which is the
+  upper bound of $\{ \dd{is}, \dd{js} \}$ by Proposition~\ref{prop:nucl-lemma-1}.
 \end{proof}
 
 To be able to define the patch frame on $F$, we will also need some lemmas about nuclei in general.
