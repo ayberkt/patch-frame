@@ -119,7 +119,7 @@ the locale corresponding to frame $F$.
   satisfying:
   \begin{itemize}
     \item (meet preservation) $j(x \wedge y) = j(x) \wedge j(y)$;
-    \item (inflation) $x \le j(x)$; and
+    \item (inflation property) $x \le j(x)$; and
     \item (idempotency) $j(j(x)) \le j(x)$.
   \end{itemize}
   for every $x, y : | F |$.
@@ -272,11 +272,11 @@ Scott-continuous nuclei. Let us write this a bit more precisely as follows:
       &\quad=\quad \mathfrak{d}(is')(k_i(x)) \wedge \mathfrak{d}(is')(k_i(y)) & [\text{IH}]\\
       &\quad\equiv\quad (\mathfrak{d}(is') \circ k_i)(x) \wedge (\mathfrak{d}(is') \circ k_i)(y).
   \end{align*}
-  For inflation, consider some $x : | F |$. We have that
+  For the inflation property, consider some $x : | F |$. We have that
   \begin{equation*}
     x \le k_i(x) \le \mathfrak{d}(is')(k_i(x)),
   \end{equation*}
-  by the inflation $k_i$ and the IH.
+  by the inflation property of $k_i$ and the IH.
 \end{proof}
 
 \begin{prop}\label{prop:star-ub}
@@ -368,7 +368,8 @@ To be able to define the patch frame on $F$, we will also need some lemmas about
     (b) Scott-continuous, and
     (c) the least upper bound of $K$.
 
-  \paragraph{(a).} Inflation is direct. For meet preservation, consider some $x, y : | F |$. We have:
+  \paragraph{(a).} The inflation property is direct. For meet preservation, consider some
+  $x, y : | F |$. We have:
   \begin{align*}
     \left(\bigvee^N_{i} k_i\right)(x)
     &\quad\equiv\quad \bigvee \left\{ \alpha(x \wedge y) ~|~ \alpha \in K^* \right\} \\
