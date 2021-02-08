@@ -83,7 +83,7 @@
 \end{defn}
 
 \begin{defn}[Directed family]
-  A \define{directed family} on some type $A$ is a family $(I, f)$ such that (a) $I$ is (merely)
+  A \define{directed family on some type} $A$ is a family $(I, f)$ such that (a) $I$ is (merely)
   inhabited, and (b) for every $i, j : I$, there (merely) exists some $k : I$ such that $f(k)$ is
   the upper bound of $\{ f(i), f(j) \}$.
 \end{defn}
@@ -93,9 +93,9 @@ order, and one for the index type of families on which the join operation is def
 convention of using universe variables of $\UU$, $\VV$, and $\WW$ for these respectively.
 
 \begin{defn}[Frame]
-  A $(\UU, \VV, \WW)$-frame consists of:
+  A \define{$(\UU, \VV, \WW)$-frame} consists of:
   \begin{itemize}
-    \item an set $| F | : \UU$,
+    \item a set $| F | : \UU$,
     \item a partial order $\_\le\_\ :\ | F | \rightarrow \Omega_\VV$,
     \item a top element $\top : | F |$,
     \item a meet operation i.e.\ an operation $\_\wedge\_\ :\ | F | \rightarrow | F | \rightarrow | F |$ such that $x \wedge y$ is
@@ -115,8 +115,8 @@ The nuclei on a frame $F$ correspond to the regular monomorphisms (in the catego
 the locale corresponding to frame $F$.
 
 \begin{defn}[Nucleus]
-  A nucleus on a $(\UU, \VV, \WW)$-frame $F$ is an endofunction
-  $j : | F | \rightarrow | F |$ satisfying:
+  A \define{nucleus on a $(\UU, \VV, \WW)$-frame} $F$ is an endofunction $j : | F | \rightarrow | F |$
+  satisfying:
   \begin{itemize}
     \item (meet preservation) $j(x \wedge y) = j(x) \wedge j(y)$;
     \item (inflation) $x \le j(x)$; and
@@ -235,8 +235,9 @@ which will always be directed. However, in a predicative setting, this works onl
 Scott-continuous nuclei. Let us write this a bit more precisely as follows:
 
 \begin{defn}
-  Let $K :\equiv \{ k_i \}_{i \in I}$ be a family of nuclei on a given $(\UU, \VV, \WW)$-frame $F$. We
-  define $K^*$ as the family $(\mathsf{List}(I), \mathfrak{d})$ where $\mathfrak{d}$ is defined as:
+  Given a family $K :\equiv \{ k_i \}_{i \in I}$ of nuclei on a given $(\UU, \VV, \WW)$-frame $F$, we
+  define \define{$K^*$} as the family $(\mathsf{List}(I), \mathfrak{d})$ where $\mathfrak{d}$ is
+  defined as:
   \begin{align*}
     \mathfrak{d}(\mathtt{[\ ]})  \quad&:\equiv\quad \mathsf{id}; \\
     \mathfrak{d}(i \cons is)     \quad&:\equiv\quad \mathfrak{d}(is) \circ k_i.
