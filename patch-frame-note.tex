@@ -361,7 +361,7 @@ To be able to define the patch frame on $F$, we will also need some lemmas about
   Let $K \is \{ k_i \}_{i : I}$ be a family of Scott-continuous nuclei. Its join is given by
   the operation $\bigvee^N$ defined as:
   \begin{equation*}
-    \bigvee^N_{i} k_i \quad\is\quad x \mapsto \bigvee^F \left\{ \alpha(x) ~|~ \alpha \in K^* \right\}.
+    \bigvee^N_{i} k_i \quad\is\quad x \mapsto \bigvee \left\{ \alpha(x) ~|~ \alpha \in K^* \right\}.
   \end{equation*}
   We need to show that $\bigvee^N_{i} k_i$ is
     (a) a nucleus,
@@ -371,30 +371,30 @@ To be able to define the patch frame on $F$, we will also need some lemmas about
   \paragraph{(a).} Inflation is direct. For meet preservation, consider some $x, y : | F |$. We have:
   \begin{align*}
     \left(\bigvee^N_{i} k_i\right)(x)
-    &\quad\equiv\quad \bigvee^F \left\{ \alpha(x \wedge y) ~|~ \alpha \in K^* \right\} \\
-    &\quad=\quad \bigvee^F \left\{ \alpha(x) \wedge \alpha(y) ~|~ \alpha \in K^* \right\}
+    &\quad\equiv\quad \bigvee \left\{ \alpha(x \wedge y) ~|~ \alpha \in K^* \right\} \\
+    &\quad=\quad \bigvee \left\{ \alpha(x) \wedge \alpha(y) ~|~ \alpha \in K^* \right\}
           & [\text{$\alpha$ is a prenucleus}] \\
-    &\quad=\quad \bigvee^F \left\{ \alpha(x) \wedge \beta(y) ~|~ \alpha, \beta \in K^* \right\}
+    &\quad=\quad \bigvee \left\{ \alpha(x) \wedge \beta(y) ~|~ \alpha, \beta \in K^* \right\}
           & [\text{\todo{complete}}] \\
-    &\quad=\quad \paren{\bigvee^F \setof{ \alpha(x) ~|~ \alpha \in K^* }} \wedge \paren{\bigvee^F \setof{ \beta(y) ~|~ \beta \in K^* }}
+    &\quad=\quad \paren{\bigvee \setof{ \alpha(x) ~|~ \alpha \in K^* }} \wedge \paren{\bigvee \setof{ \beta(y) ~|~ \beta \in K^* }}
           & [\text{distributivity}] \\
     &\quad\equiv\quad \paren{\bigvee^N_i k_i}(x) \wedge \paren{\bigvee^N_i k_i}(y).
   \end{align*}
   For idempotency, let $x : | F |$. We have that:
   \begin{align*}
     \left(\bigvee^N_{i} k_i\right)\left(\left(\bigvee^N_{i} k_i\right)(x)\right)
-    &\quad\equiv\quad \bigvee^F \setof{ \bigvee^F \setof{ \alpha(\beta(x)) ~|~ \beta \in K^* } ~|~ \alpha \in K^* } \\
-    &\quad\le\quad \bigvee^F \setof{ \alpha(\beta(x)) ~|~ \alpha, \beta \in K^* } & [\text{\todo{explain}}]\\
-    &\quad\le\quad \bigvee^F \setof{ \alpha(x) ~|~ \alpha \in K^* } & [\text{\todo{explain}}]\\
+    &\quad\equiv\quad \bigvee \setof{ \bigvee \setof{ \alpha(\beta(x)) ~|~ \beta \in K^* } ~|~ \alpha \in K^* } \\
+    &\quad\le\quad \bigvee \setof{ \alpha(\beta(x)) ~|~ \alpha, \beta \in K^* } & [\text{\todo{explain}}]\\
+    &\quad\le\quad \bigvee \setof{ \alpha(x) ~|~ \alpha \in K^* } & [\text{\todo{explain}}]\\
     &\quad\equiv\quad \paren{\bigvee^N_i k_i}(x).
   \end{align*}
 
   \paragraph{(b).} Let $U \is \{ x_j \}_{j : J}$ be a directed family over $| F |$. The result follows
   as:
   \begin{align*}
-       \bigvee^F \setof{ \alpha\left(\bigvee^F_j x_j\right) ~|~ \alpha \in K^* }
-  &\quad=\quad \bigvee^F \setof{ \bigvee^F \setof{ \alpha(x_j) ~|~ x_j \in U } ~|~ \alpha \in K^* }  & [\text{Scott-continuity of $\alpha$}] \\
-  &\quad=\quad \bigvee^F \setof{ \bigvee^F \setof{ \alpha(x_j) ~|~ \alpha : K^* } ~|~ x_j \in U }. & [\text{joins commute}]          \\
+       \bigvee \setof{ \alpha\left(\bigvee_j x_j\right) ~|~ \alpha \in K^* }
+  &\quad=\quad \bigvee \setof{ \bigvee \setof{ \alpha(x_j) ~|~ x_j \in U } ~|~ \alpha \in K^* }  & [\text{Scott-continuity of $\alpha$}] \\
+  &\quad=\quad \bigvee \setof{ \bigvee \setof{ \alpha(x_j) ~|~ \alpha : K^* } ~|~ x_j \in U }. & [\text{joins commute}]          \\
   \end{align*}
 
   \paragraph{(c).} The fact that $\bigvee^N_i k_i$ is an upper bound of $K$ is easy to verify:
