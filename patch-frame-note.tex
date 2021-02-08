@@ -269,14 +269,14 @@ Scott-continuous nuclei. Let us write this a bit more precisely as follows:
     (\mathfrak{d}(is') \circ k_i)(x \wedge y)
       &\quad\equiv\quad \mathfrak{d}(is')(k_i(x \wedge y))\\
       &\quad=\quad \mathfrak{d}(is')(k_i(x) \wedge k_i(y)) & [\text{$k_i$ is a nucleus}]\\
-      &\quad=\quad \mathfrak{d}(is')(k_i(x)) \wedge \mathfrak{d}(is')(k_i(y)) & [\text{IH}]\\
+      &\quad=\quad \mathfrak{d}(is')(k_i(x)) \wedge \mathfrak{d}(is')(k_i(y)) & [\text{inductive hypothesis}]\\
       &\quad\equiv\quad (\mathfrak{d}(is') \circ k_i)(x) \wedge (\mathfrak{d}(is') \circ k_i)(y).
   \end{align*}
   For the inflation property, consider some $x : | F |$. We have that
   \begin{equation*}
     x \le k_i(x) \le \mathfrak{d}(is')(k_i(x)),
   \end{equation*}
-  by the inflation property of $k_i$ and the IH.
+  by the inflation property of $k_i$ and the inductive hypothesis.
 \end{proof}
 
 \begin{prop}\label{prop:star-ub}
@@ -289,7 +289,7 @@ Scott-continuous nuclei. Let us write this a bit more precisely as follows:
   \begin{align*}
        K^*_{is'}(K_i(x))
   \quad&\le\quad K^*_{is'}(j(x)) & [\text{monotonicity of $K^*_{is'}$ (Prop.~\ref{prop:star-prenucleus} and Prop.~\ref{prop:nuclei-mono})}] \\
-  \quad&\le\quad j(j(x))        & [\text{IH}] \\
+  \quad&\le\quad j(j(x))        & [\text{inductive hypothesis}] \\
   \quad&\le\quad j(x).          & [\text{idempotency of $j$}]
   \end{align*}
 \end{proof}
@@ -307,9 +307,9 @@ Scott-continuous nuclei. Let us write this a bit more precisely as follows:
     (\mathfrak{d}(is') \circ k_i) \left(\bigvee_i x_i\right)
     &\quad\equiv\quad \mathfrak{d}(is')\left(k_i \left( \bigvee_i x_i \right)\right) & \\
     &\quad=\quad \mathfrak{d}(is')\left(\bigvee_{i : I} \left( k_i(x_i) \right)\right) & [\text{Scott-continuity of $k_i$}]\\
-    &\quad=\quad \bigvee_{i : I} \mathfrak{d}(is')(k_i(x_i)) & [\text{IH}].
+    &\quad=\quad \bigvee_{i : I} \mathfrak{d}(is')(k_i(x_i)) & [\text{inductive hypothesis}].
   \end{align*}
-  Note that to be able to appeal to the IH, it must be shown that
+  Note that to be able to appeal to the inductive hypothesis, it must be shown that
   $\{ k_i(x_i) \}_{i : I}$ is a directed family which follows from \ldots \todo{complete}
 \end{proof}
 
@@ -340,7 +340,7 @@ To be able to define the patch frame on $F$, we will also need some lemmas about
     L^*_{i \cons is'}(x)
       \quad\equiv\quad L^*_{is'}(L_i(x))
      &\quad\equiv\quad L^*_{is'}(j(x) \wedge k_i(x)) \\
-     &\quad\le\quad K^*_{is'}(j(x) \wedge k_i(x)) & [\text{IH}] \\
+     &\quad\le\quad K^*_{is'}(j(x) \wedge k_i(x)) & [\text{inductive hypothesis}] \\
      &\quad\le\quad K^*_{is'}(j(x)) \wedge K^*_{is'}(k_i(x)) & [K^*_{is'}\ \text{is a prenucleus}] \\
      &\quad\le\quad K^*_{is'}(k_i(x)),
   \end{align*}
@@ -349,7 +349,7 @@ To be able to define the patch frame on $F$, we will also need some lemmas about
     L^*_{i \cons is'}(x)
     \quad\equiv\quad L^*_{is'}(L_i(x)) 
     &\quad\equiv\quad L^*_{is'}(j(x) \wedge k_i(x)) & \\
-    &\quad\le\quad j(j(x) \wedge k_i(x)) & [\text{IH}] \\
+    &\quad\le\quad j(j(x) \wedge k_i(x)) & [\text{inductive hypothesis}] \\
     &\quad\le\quad j(j(x)) \wedge j(k_i(x)) & [\text{$j$ preserves meets}]\\
     &\quad\le\quad j(j(x)) & \\
     &\quad=\quad j(x), & [\text{$j$ is idempotent}]
