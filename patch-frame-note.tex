@@ -57,6 +57,9 @@
 \newcommand{\VV}{\mathcal{V}}
 \newcommand{\WW}{\mathcal{W}}
 
+%% Notation for the enumeration function in directification.
+\newcommand{\dd}[1]{\mathfrak{d}(#1)}
+
 %% Shorthand for family.
 \newcommand{\Fam}[2]{\mathsf{Fam}_{#1}\left(#2\right)}
 
@@ -239,8 +242,8 @@ Scott-continuous nuclei. Let us write this a bit more precisely as follows:
   define \define{$K^*$} as the family $(\mathsf{List}(I), \mathfrak{d})$ where $\mathfrak{d}$ is
   defined as:
   \begin{align*}
-    \mathfrak{d}(\mathtt{[\ ]})  \quad&:\equiv\quad \mathsf{id}; \\
-    \mathfrak{d}(i \cons is)     \quad&:\equiv\quad \mathfrak{d}(is) \circ k_i.
+    \dd{\mathtt{[\ ]}}  \quad&:\equiv\quad \mathsf{id}; \\
+    \dd{i \cons is}     \quad&:\equiv\quad \dd{is} \circ k_i.
   \end{align*}
 \end{defn}
 
@@ -248,7 +251,7 @@ Scott-continuous nuclei. Let us write this a bit more precisely as follows:
   Let $K :\equiv \{ k_i \}_{i : I}$ be a family of prenuclei on a frame $F$. Given
   any $is, js : \mathsf{List}(I)$,
   \(
-    \mathfrak{d}(is \append js) = \mathfrak{d}(is) \circ \mathfrak{d}(js).
+    \dd{is \append js} = \dd{is} \circ \dd{js}.
   \)
 \end{prop}
 \begin{proof}
@@ -256,25 +259,25 @@ Scott-continuous nuclei. Let us write this a bit more precisely as follows:
 \end{proof}
 
 \begin{prop}\label{prop:star-prenucleus}
-  Given a family $K :\equiv \{ k_i \}_{i : I}$ of nuclei on a $(\UU, \VV, \WW)$-frame
-  $F$, every $\alpha \in K^*$ is a prenucleus, that is, for every
-  $is : \mathsf{List}(I)$, $\mathfrak{d}(is)$ is a prenucleus
+  Given a family $K :\equiv \{ k_i \}_{i : I}$ of nuclei on a $(\UU, \VV, \WW)$-frame $F$, every $\alpha \in
+  K^*$ is a prenucleus, that is, for every $is : \mathsf{List}(I)$, the function $\dd{is}$
+  is a prenucleus
 \end{prop}
 \begin{proof}
   If $is = \mathtt{[\ ]}$, we are done as it is immediate that the identity
   function $\mathsf{id}$ is a prenucleus. If $is = i \cons is'$, we need
-  to show that $\mathfrak{d}(is') \circ k_i$ is a prenucleus. For meet preservation,
+  to show that $\dd{is'} \circ k_i$ is a prenucleus. For meet preservation,
   consider some $x, y : | F |$. We have that:
   \begin{align*}
-    (\mathfrak{d}(is') \circ k_i)(x \wedge y)
-      &\quad\equiv\quad \mathfrak{d}(is')(k_i(x \wedge y))\\
-      &\quad=\quad \mathfrak{d}(is')(k_i(x) \wedge k_i(y)) & [\text{$k_i$ is a nucleus}]\\
-      &\quad=\quad \mathfrak{d}(is')(k_i(x)) \wedge \mathfrak{d}(is')(k_i(y)) & [\text{inductive hypothesis}]\\
-      &\quad\equiv\quad (\mathfrak{d}(is') \circ k_i)(x) \wedge (\mathfrak{d}(is') \circ k_i)(y).
+    (\dd{is'} \circ k_i)(x \wedge y)
+      &\quad\equiv\quad \dd{is'}(k_i(x \wedge y))                                                       \\
+      &\quad=\quad \dd{is'}(k_i(x) \wedge k_i(y))                  & [\text{$k_i$ is a nucleus}]   \\
+      &\quad=\quad \dd{is'}(k_i(x)) \wedge \dd{is'}(k_i(y))        & [\text{inductive hypothesis}] \\
+      &\quad\equiv\quad (\dd{is'} \circ k_i)(x) \wedge (\dd{is'} \circ k_i)(y).
   \end{align*}
   For the inflation property, consider some $x : | F |$. We have that
   \begin{equation*}
-    x \le k_i(x) \le \mathfrak{d}(is')(k_i(x)),
+    x \le k_i(x) \le \dd{is'}(k_i(x)),
   \end{equation*}
   by the inflation property of $k_i$ and the inductive hypothesis.
 \end{proof}
@@ -304,10 +307,10 @@ Scott-continuous nuclei. Let us write this a bit more precisely as follows:
   $\{ x_i \}_{i : I}$ be a directed family on $F$. The result follows equationally
   as follows:
   \begin{align*}
-    (\mathfrak{d}(is') \circ k_i) \left(\bigvee_i x_i\right)
-    &\quad\equiv\quad \mathfrak{d}(is')\left(k_i \left( \bigvee_i x_i \right)\right) & \\
-    &\quad=\quad \mathfrak{d}(is')\left(\bigvee_{i : I} \left( k_i(x_i) \right)\right) & [\text{Scott-continuity of $k_i$}]\\
-    &\quad=\quad \bigvee_{i : I} \mathfrak{d}(is')(k_i(x_i)) & [\text{inductive hypothesis}].
+    (\dd{is'} \circ k_i) \left(\bigvee_i x_i\right)
+    &\quad\equiv\quad \dd{is'}\left(k_i \left( \bigvee_i x_i \right)\right) & \\
+    &\quad=\quad \dd{is'}\left(\bigvee_{i : I} \left( k_i(x_i) \right)\right) & [\text{Scott-continuity of $k_i$}]\\
+    &\quad=\quad \bigvee_{i : I} \dd{is'}(k_i(x_i)) & [\text{inductive hypothesis}].
   \end{align*}
   Note that to be able to appeal to the inductive hypothesis, it must be shown that
   $\{ k_i(x_i) \}_{i : I}$ is a directed family which follows from \ldots \todo{complete}
@@ -318,11 +321,11 @@ Scott-continuous nuclei. Let us write this a bit more precisely as follows:
   is a directed family.
 \end{prop}
 \begin{proof}
-  $K^*$ is always inhabited by $\mathfrak{d}(\mathtt{[\ ]})$. Upwards-closure also holds since,
-  given $is, js : \mathsf{List}(I)$, $\mathfrak{d}(is \append js)$ is the upper bound of $\{
-  \mathfrak{d}(is), \mathfrak{d}(js) \}$: $\mathfrak{d}(is \append js) = \mathfrak{d}(is) \circ
-  \mathfrak{d}(js)$ (by Proposition~\ref{prop:app-lemma}) which is the upper bound of $\{
-  \mathfrak{d}(is), \mathfrak{d}(js) \}$ by Proposition~\ref{prop:nucl-lemma-1}.
+  $K^*$ is always inhabited by $\dd{\mathtt{[\ ]}}$. Upwards-closure also holds since,
+  given $is, js : \mathsf{List}(I)$, $\dd{is \append js}$ is the upper bound of $\{
+  \dd{is}, \dd{js} \}$: $\dd{is \append js} = \dd{is} \circ
+  \dd{js}$ (by Proposition~\ref{prop:app-lemma}) which is the upper bound of $\{
+  \dd{is}, \dd{js} \}$ by Proposition~\ref{prop:nucl-lemma-1}.
 \end{proof}
 
 To be able to define the patch frame on $F$, we will also need some lemmas about nuclei in general.
