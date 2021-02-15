@@ -6,6 +6,7 @@
 
 \usepackage{fontspec}
 \usepackage{mathtools}
+\usepackage{enumerate}
 \usepackage{amsfonts}
 \usepackage[usenames,dvipsnames,table]{xcolor}
 \usepackage[
@@ -76,13 +77,18 @@
 
 \begin{defn}[Family]
   A \define{$\UU$-family on a type} $A$ is a pair $(I, f)$ where $I : \UU$ and $f : I \rightarrow A$. We
-  denote the type of $\UU$-families by $\mathsf{Fam}$ i.e.\ $\Fam{\UU}{A} :\equiv \Sigma_{(I : \UU)} I \rightarrow A$.
+  denote the type of $\UU$-families by $\mathsf{Fam}$ i.e.\ $\Fam{\UU}{A} \is \Sigma_{(I : \UU)} I \rightarrow A$.
 \end{defn}
 
+We often use the shorthand $\{ x_i \}_{i : I}$ for families.
+
 \begin{defn}[Directed family]
-  A \define{directed family on some type} $A$ is a family $(I, f)$ such that (a) $I$ is (merely)
-  inhabited, and (b) for every $i, j : I$, there (merely) exists some $k : I$ such that $f(k)$ is
-  the upper bound of $\{ f(i), f(j) \}$.
+  A \define{directed family on some type} $A$ is a family $(I, f)$ such that
+  \begin{enumerate}[\indent (a)]
+    \item $I$ is (merely) inhabited, and
+    \item for every $i, j : I$, there (merely) exists some $k : I$ such that $f(k)$ is the upper
+      bound of $\{ f(i), f(j) \}$.
+  \end{enumerate}
 \end{defn}
 
 Our definition of a frame is parameterised by three universes: one for the carrier set, one for the
@@ -97,19 +103,18 @@ convention of using universe variables of $\UU$, $\VV$, and $\WW$ for these resp
     \item a top element $\top : | F |$,
     \item a meet operation i.e.\ an operation $\_\wedge\_\ :\ | F | \rightarrow | F | \rightarrow | F |$ such that $x \wedge y$ is
       the greatest lower bound of $x$ and $y$ for every $x, y : | F |$, and
-    \item a join operation i.e.\ an operation $\bigvee\_ : \mathsf{Fam}_{\WW}(| F |) \rightarrow
-      | F |$ such that given a family $\{ x_i \}_{i \in I}$, $\bigvee_i x_i$ is the least upper bound
-      of $\{ x_i \}_{i : I}$,
+    \item a join operation i.e.\ an operation $\bigvee\_ : \mathsf{Fam}_{\WW}(| F |) \rightarrow | F |$ such that
+      given a family $\{ x_i \}_{i : I}$, $\bigvee_i x_i$ is the least upper bound of $\{ x_i \}_{i : I}$;
   \end{itemize}
   such that binary meets distribute over arbitrary joins:
   \begin{equation*}
     x \wedge \bigvee_{i : I} y_i = \bigvee_{i : I} x \wedge y_i
   \end{equation*}
-  for every $x : | F |$, family $\{ y \}_{i : I} : \mathsf{Fam}_{\WW}(| F |)$.
+  for every $x : | F |$, family $\{ y_i \}_{i : I} : \mathsf{Fam}_{\WW}(| F |)$.
 \end{defn}
 
-The nuclei on a frame $F$ correspond to the regular monomorphisms (in the category of locales) on
-the locale corresponding to frame $F$.
+Nuclei on a frame $F$ correspond to regular monomorphisms (in the category of locales) on the locale
+corresponding to frame $F$.
 
 \begin{defn}[Nucleus]
   A \define{nucleus on a $(\UU, \VV, \WW)$-frame} $F$ is an endofunction $j : | F | \rightarrow | F |$
