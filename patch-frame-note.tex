@@ -232,25 +232,23 @@ which will always be directed. However, in a predicative setting, this works onl
 Scott-continuous nuclei. Let us write this a bit more precisely as follows:
 
 Before we proceed with the construction, let us note that we use the following notation for lists:
-the empty list is denoted $\emptyl$, prepending an element $x$ onto some list $xs$ is denoted $x
-\cons xs$, and the appending of $ys$ to the end of $xs$ is denoted $xs \append ys$.
+the empty list is denoted $\emptyl$, prepending an element $x$ onto some list $s$ is denoted $x
+\cons s$, and the appending of $s$ to the end of list $t$ is denoted $s \append t$.
 
 \begin{defn}
   Given a family $K :\equiv \{ k_i \}_{i \in I}$ of nuclei on a given $(\UU, \VV, \WW)$-frame $F$, we
   define \define{$K^*$} as the family $(\mathsf{List}(I), \mathfrak{d})$ where $\mathfrak{d}$ is
   defined as:
   \begin{align*}
-    \dd{\emptyl}    \quad&:\equiv\quad \mathsf{id};  \\
-    \dd{i \cons is} \quad&:\equiv\quad \dd{is} \circ k_i.
+    \dd{\emptyl}   \quad&:\equiv\quad \mathsf{id};  \\
+    \dd{i \cons s} \quad&:\equiv\quad \dd{s} \circ k_i.
   \end{align*}
 \end{defn}
 
 \begin{prop}\label{prop:app-lemma}
   Let $K :\equiv \{ k_i \}_{i : I}$ be a family of prenuclei on a frame $F$. Given
-  any $is, js : \mathsf{List}(I)$,
-  \(
-    \dd{is \append js} = \dd{is} \circ \dd{js}.
-  \)
+  any $s, t : \mathsf{List}(I)$,
+  \(\dd{s \append t} = \dd{s} \circ \dd{t}.\)
 \end{prop}
 \begin{proof}
   Straightforward induction, using function extensionality.
@@ -258,23 +256,23 @@ the empty list is denoted $\emptyl$, prepending an element $x$ onto some list $x
 
 \begin{prop}\label{prop:star-prenucleus}
   Given a family $K :\equiv \{ k_i \}_{i : I}$ of nuclei on a $(\UU, \VV, \WW)$-frame $F$, every $\alpha \in
-  K^*$ is a prenucleus, that is, for every $is : \mathsf{List}(I)$, the function $\dd{is}$
+  K^*$ is a prenucleus, that is, for every $s : \mathsf{List}(I)$, the function $\dd{s}$
   is a prenucleus
 \end{prop}
 \begin{proof}
-  If $is = \emptyl$, we are done as it is immediate that the identity function $\mathsf{id}$ is a
-  prenucleus. If $is = i \cons is'$, we need to show that $\dd{is'} \circ k_i$ is a prenucleus. For meet
+  If $s = \emptyl$, we are done as it is immediate that the identity function $\mathsf{id}$ is a
+  prenucleus. If $s = i \cons s'$, we need to show that $\dd{s'} \circ k_i$ is a prenucleus. For meet
   preservation, consider some $x, y : | F |$. We have that:
   \begin{align*}
-    (\dd{is'} \circ k_i)(x \wedge y)
-      &\quad\equiv\quad \dd{is'}(k_i(x \wedge y))                                                       \\
-      &\quad=\quad \dd{is'}(k_i(x) \wedge k_i(y))                  & [\text{$k_i$ is a nucleus}]   \\
-      &\quad=\quad \dd{is'}(k_i(x)) \wedge \dd{is'}(k_i(y))        & [\text{inductive hypothesis}] \\
-      &\quad\equiv\quad (\dd{is'} \circ k_i)(x) \wedge (\dd{is'} \circ k_i)(y).
+    (\dd{s'} \circ k_i)(x \wedge y)
+      &\quad\equiv\quad \dd{s'}(k_i(x \wedge y))                                                       \\
+      &\quad=\quad \dd{s'}(k_i(x) \wedge k_i(y))                  & [\text{$k_i$ is a nucleus}]   \\
+      &\quad=\quad \dd{s'}(k_i(x)) \wedge \dd{s'}(k_i(y))        & [\text{inductive hypothesis}] \\
+      &\quad\equiv\quad (\dd{s'} \circ k_i)(x) \wedge (\dd{s'} \circ k_i)(y).
   \end{align*}
   For the inflation property, consider some $x : | F |$. We have that
   \begin{equation*}
-    x \le k_i(x) \le \dd{is'}(k_i(x)),
+    x \le k_i(x) \le \dd{s'}(k_i(x)),
   \end{equation*}
   by the inflation property of $k_i$ and the inductive hypothesis.
 \end{proof}
@@ -284,11 +282,11 @@ the empty list is denoted $\emptyl$, prepending an element $x$ onto some list $x
   an upper bound of $K$ then $j$ is an upper bound of $K^*$.
 \end{prop}
 \begin{proof}
-  Let $is : \mathsf{List}(I)$. If $is = \emptyl$, we have that $\mathsf{id}(x) \equiv x \le j(x)$.
-  If $is = i \cons is'$, then we have
+  Let $s : \mathsf{List}(I)$. If $s = \emptyl$, we have that $\mathsf{id}(x) \equiv x \le j(x)$.
+  If $s = i \cons s'$, then we have
   \begin{align*}
-       K^*_{is'}(K_i(x))
-  \quad&\le\quad K^*_{is'}(j(x)) & [\text{monotonicity of $K^*_{is'}$ (Prop.~\ref{prop:star-prenucleus} and Prop.~\ref{prop:nuclei-mono})}] \\
+       K^*_{s'}(K_i(x))
+  \quad&\le\quad K^*_{s'}(j(x)) & [\text{monotonicity of $K^*_{s'}$ (Prop.~\ref{prop:star-prenucleus} and Prop.~\ref{prop:nuclei-mono})}] \\
   \quad&\le\quad j(j(x))        & [\text{inductive hypothesis}] \\
   \quad&\le\quad j(x).          & [\text{idempotency of $j$}]
   \end{align*}
@@ -299,15 +297,15 @@ the empty list is denoted $\emptyl$, prepending an element $x$ onto some list $x
   prenucleus $\alpha \in K^*$, is Scott-continuous
 \end{prop}
 \begin{proof}
-  In the base case of $is = \emptyl$, it is trivial that the identity
-  prenucleus is Scott-continuous. For the case of $is = i \cons is'$, let
+  In the base case of $s = \emptyl$, it is trivial that the identity
+  prenucleus is Scott-continuous. For the case of $s = i \cons s'$, let
   $\{ x_i \}_{i : I}$ be a directed family on $F$. The result follows equationally
   as follows:
   \begin{align*}
-    (\dd{is'} \circ k_i) \left(\bigvee_i x_i\right)
-    &\quad\equiv\quad \dd{is'}\left(k_i \left( \bigvee_i x_i \right)\right) & \\
-    &\quad=\quad \dd{is'}\left(\bigvee_{i : I} \left( k_i(x_i) \right)\right) & [\text{Scott-continuity of $k_i$}]\\
-    &\quad=\quad \bigvee_{i : I} \dd{is'}(k_i(x_i)) & [\text{inductive hypothesis}].
+    (\dd{s'} \circ k_i) \left(\bigvee_i x_i\right)
+    &\quad\equiv\quad \dd{s'}\left(k_i \left( \bigvee_i x_i \right)\right) & \\
+    &\quad=\quad \dd{s'}\left(\bigvee_{i : I} \left( k_i(x_i) \right)\right) & [\text{Scott-continuity of $k_i$}]\\
+    &\quad=\quad \bigvee_{i : I} \dd{s'}(k_i(x_i)) & [\text{inductive hypothesis}].
   \end{align*}
   Note that to be able to appeal to the inductive hypothesis, it must be shown that
   $\{ k_i(x_i) \}_{i : I}$ is a directed family which follows from \ldots \todo{complete}
@@ -317,42 +315,42 @@ the empty list is denoted $\emptyl$, prepending an element $x$ onto some list $x
   Given a family $K :\equiv \{ k_i \}_{i : I}$ of nuclei on some frame $F$, the family $K^*$ is directed.
 \end{prop}
 \begin{proof}
-  $K^*$ is always inhabited by $\dd{\emptyl}$. Upwards-closure also holds since,
-  given $is, js : \mathsf{List}(I)$, $\dd{is \append js}$ is the upper bound of $\{ \dd{is}, \dd{js}
-  \}$: $\dd{is \append js} = \dd{is} \circ \dd{js}$ (by Proposition~\ref{prop:app-lemma}) which is the
-  upper bound of $\{ \dd{is}, \dd{js} \}$ by Proposition~\ref{prop:nucl-lemma-1}.
+  $K^*$ is always inhabited by $\dd{\emptyl}$. Upwards-closure also holds since, given $s, t :
+  \mathsf{List}(I)$, $\dd{s \append t}$ is the upper bound of $\{ \dd{s}, \dd{t} \}$:
+  $\dd{s \append t} = \dd{s} \circ \dd{t}$ (by Proposition~\ref{prop:app-lemma}) which is the upper
+  bound of $\{ \dd{s}, \dd{t} \}$ by Proposition~\ref{prop:nucl-lemma-1}.
 \end{proof}
 
 To be able to define the patch frame on $F$, we will also need some lemmas about nuclei in general.
 
 \begin{prop}
   Given a nucleus $j$ on some frame $F$ and a family $K \is \{ k_i \}_{i : I}$ of nuclei on $F$, if
-  we denote by $L$ the set $\{ j \wedge k ~|~ k \in K \}$, we have that $L^*_{is}$ is a lower bound of
-  $\{ K^*_{is}, j \}$.
+  we denote by $L$ the set $\{ j \wedge k ~|~ k \in K \}$, we have that $L^*_{s}$ is a lower bound of
+  $\{ K^*_{s}, j \}$.
 \end{prop}
 \begin{proof}
-  Let $is : \mathsf{List}(I)$ and $x : | F |$. In the base case of $is \equiv \emptyl$, we are done
+  Let $s : \mathsf{List}(I)$ and $x : | F |$. In the base case of $s \equiv \emptyl$, we are done
   as both sides of the inequality reduce to the application of $\mathsf{id}(x)$. If we have
-  $is \equiv i \append is'$, we have that
+  $s \equiv i \append s'$, we have that
   \begin{align*}
-    L^*_{i \cons is'}(x)
-      \quad\equiv\quad L^*_{is'}(L_i(x))
-     &\quad\equiv\quad L^*_{is'}(j(x) \wedge k_i(x)) \\
-     &\quad\le\quad K^*_{is'}(j(x) \wedge k_i(x)) & [\text{inductive hypothesis}] \\
-     &\quad\le\quad K^*_{is'}(j(x)) \wedge K^*_{is'}(k_i(x)) & [K^*_{is'}\ \text{is a prenucleus}] \\
-     &\quad\le\quad K^*_{is'}(k_i(x)),
+    L^*_{i \cons s'}(x)
+      \quad\equiv\quad L^*_{s'}(L_i(x))
+     &\quad\equiv\quad L^*_{s'}(j(x) \wedge k_i(x)) \\
+     &\quad\le\quad K^*_{s'}(j(x) \wedge k_i(x)) & [\text{inductive hypothesis}] \\
+     &\quad\le\quad K^*_{s'}(j(x)) \wedge K^*_{s'}(k_i(x)) & [K^*_{s'}\ \text{is a prenucleus}] \\
+     &\quad\le\quad K^*_{s'}(k_i(x)),
   \end{align*}
   and that
   \begin{align*}
-    L^*_{i \cons is'}(x)
-    \quad\equiv\quad L^*_{is'}(L_i(x)) 
-    &\quad\equiv\quad L^*_{is'}(j(x) \wedge k_i(x)) & \\
+    L^*_{i \cons s'}(x)
+    \quad\equiv\quad L^*_{s'}(L_i(x)) 
+    &\quad\equiv\quad L^*_{s'}(j(x) \wedge k_i(x)) & \\
     &\quad\le\quad j(j(x) \wedge k_i(x)) & [\text{inductive hypothesis}] \\
     &\quad\le\quad j(j(x)) \wedge j(k_i(x)) & [\text{$j$ preserves meets}]\\
     &\quad\le\quad j(j(x)) & \\
     &\quad=\quad j(x), & [\text{$j$ is idempotent}]
   \end{align*}
-  which is to say $L^*_{i \cons is'}(x)$ is lower than both of $K^*_{i \cons is'}(x)$ and $j(x)$.
+  which is to say $L^*_{i \cons s'}(x)$ is lower than both of $K^*_{i \cons s'}(x)$ and $j(x)$.
 \end{proof}
 
 \begin{defn}[Join of a family of Scott-continuous nuclei]
@@ -401,7 +399,7 @@ To be able to define the patch frame on $F$, we will also need some lemmas about
   it is \emph{the least} upper bound, consider a Scott-continuous nucleus $j$ that is an upper bound
   of $K$. Let $x : | F |$. We need to show that $\left(\bigvee^N_i k_i\right)(x) \le j(x)$. We know by
   Proposition~\ref{prop:star-ub} that $j$ is an upper bound of $K^*$, since it is an upper bound of
-  $K$, which is to say $K^*_{is}(x) \le j(x)$ for every $is : \mathsf{List}(I)$ i.e.\ $j(x)$ is an
+  $K$, which is to say $K^*_{s}(x) \le j(x)$ for every $s : \mathsf{List}(I)$ i.e.\ $j(x)$ is an
   upper bound of the family $\setof{ \alpha(x) ~|~ \alpha \in K^* }$. Since $\left(\bigvee^N_i k_i\right)(x)$ is the
   least upper bound of this family by definition, it follows that it is below $j(x)$.
 \end{defn}
