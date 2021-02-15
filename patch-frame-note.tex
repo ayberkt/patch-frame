@@ -118,45 +118,35 @@ corresponding to frame $F$.
 
 \begin{defn}[Nucleus]
   A \define{nucleus on a $(\UU, \VV, \WW)$-frame} $F$ is an endofunction $j : | F | \rightarrow | F |$
-  satisfying:
+  satisfying, for every $x, y : | F |$,
   \begin{itemize}
-    \item (meet preservation) $j(x \wedge y) = j(x) \wedge j(y)$;
-    \item (inflation property) $x \le j(x)$; and
-    \item (idempotency) $j(j(x)) \le j(x)$.
+    \item \emph{meet preservation}: $j(x \wedge y) = j(x) \wedge j(y)$,
+    \item \emph{inflation property}: $x \le j(x)$, and
+    \item \emph{idempotency}: $j(j(x)) \le j(x)$.
   \end{itemize}
-  for every $x, y : | F |$.
 \end{defn}
 
-If an endofunction satisfies meet preservation and the inflation property but not necessarily
-idempotency, it is called a \define{prenucleus}. Prenuclei are closed under composition whereas this
-is not generally the case for nuclei.
+An inflationary and meet-preserving endofunction that is not necessarily idempotent is called a
+\define{prenucleus}. Prenuclei are closed under composition whereas this is not generally the case
+for nuclei.
 
 We write $\mathsf{Nucleus}(F)$ to denote the type of nuclei on a given frame $F$.
-
-\begin{prop}[Prenuclei are monotonic]\label{prop:nuclei-mono}
-  Every prenucleus is monotonic.
-\end{prop}
-\begin{proof}
-  Let $j : | F | \rightarrow | F |$ be a nucleus on some frame $F$ and let $x, y : | F |$
-  s.t.\ $x \le y$.
-  We have:
-  \begin{equation*}
-    j(x) = j (x \wedge y) = j(x) \wedge j(y) \le j(y),
-  \end{equation*}
-  using meet preservation and the fact that $x \le y \leftrightarrow x \wedge y = x$.
-\end{proof}
-
-\begin{prop}\label{prop:nucl-lemma-1}
-  Given any two prenuclei $j$ and $k$ on some frame $F$, $j \circ k$ is an upper bound of $\{ j, k \}$.
-\end{prop}
-\begin{proof}
-  Given any $x : | F |$, we have that $k(x) \le j(k(x))$ by the inflation property of $j$ and that
-  $j(x) \le j(k(x))$ by the monotonicity of $j$, since $x \le k(x)$ by the inflation property of $k$.
-\end{proof}
 
 \begin{prop}
   Given any nucleus $F$, the type $\mathsf{Nucleus}(F)$ is an set.
 \end{prop}
+
+\begin{prop}\label{prop:nuclei-mono}
+  Every prenucleus is monotonic.
+\end{prop}
+\begin{proof}
+  Let $j : | F | \rightarrow | F |$ be a nucleus on some frame $F$ and let $x, y : | F |$ such that $x \le y$.
+  We have:
+  \begin{equation*}
+    j(x) = j (x \wedge y) = j(x) \wedge j(y) \le j(y),
+  \end{equation*}
+  by meet preservation and the fact that $x \le y \leftrightarrow x \wedge y = x$.
+\end{proof}
 
 \begin{defn}[Scott-continuity]
   A function $f : | F | \rightarrow | G | $ from a $(\UU, \VV, \WW)$-frame $F$ to a $(\UU, \VV, \WW)$-frame
@@ -182,55 +172,74 @@ We write $\mathsf{Nucleus}(F)$ to denote the type of nuclei on a given frame $F$
 
 Nuclei form a meet-semilattice when ordered pointwise.
 
-\begin{defn}\label{defn:nuclei-semilattice}
+\begin{prop}\label{defn:nuclei-semilattice}
   The type of nuclei on a given frame $F$ forms a meet-semilattice as follows:
   \begin{itemize}
-    \item order: given nuclei $j$ and $k$, $j \le k :\equiv \forall x \in | F |.\ j(x) \le k(x)$;
-    \item top nucleus: $\_ \mapsto \top_F$; and
-    \item meet of two nucleus: $j \wedge k :\equiv x \mapsto j(x) \wedge_F k(x)$.
+    \item order: given nuclei $j$ and $k$, $j \le k :\equiv \forall x : | F |.\ j(x) \le k(x)$,
+    \item the top nucleus: $\_ \mapsto \top$, and
+    \item the meet of two nuclei: $j \wedge k :\equiv x \mapsto j(x) \wedge k(x)$.
   \end{itemize}
   The fact that $j \wedge k$ satisfies the nucleus laws is given in Proposition~\ref{prop:nuclei-meet}.
-\end{defn}
+\end{prop}
 
-We denote this $\mathcal{N}(F)$.
+We denote this meet-semilattice $\mathcal{N}(F)$. Let us also remark that, even though we are
+primarily interested in the meet-semilattice of nuclei, we also talk about the ordering on
+\emph{prenuclei} by which the same pointwise ordering is meant.
+
+\begin{prop}\label{prop:nucl-lemma-1}
+  Given any two prenuclei $j$ and $k$ on some frame $F$, $j \circ k$ is an upper bound of $\{ j, k \}$.
+\end{prop}
+\begin{proof}
+  Given any $x : | F |$, we have that $k(x) \le j(k(x))$ by the inflation property of $j$ and that
+  $j(x) \le j(k(x))$ by the monotonicity of $j$, since $x \le k(x)$ by the inflation property of $k$.
+\end{proof}
 
 \begin{prop}\label{prop:nuclei-meet}
-  Given two nuclei $j$ and $k$ on some frame $F$, the function $x \mapsto j(x) \wedge k(x)$ is a nucleus.
+  Given two nuclei $j$ and $k$ on some frame $F$, the function $j \wedge k \is x \mapsto j(x) \wedge k(x)$ is a
+  nucleus.
 \end{prop}
 \begin{proof}
   The inflation property can be seen to be satisfied from the inflation properties of $j$ and $k$
   and the fact that $j(x) \wedge k(x)$ is the greatest lower bound of $j(x)$ and $k(x)$. To see that meet
   preservation holds, let $x, y : | F |$. We have:
   \begin{align*}
-    j (x \wedge y) \wedge k (x \wedge y) &\quad=\quad j(x) \wedge j(y) \wedge k(x) \wedge k(y) \\
-                          &\quad=\quad (j(x) \wedge k(x)) \wedge (j(y) \wedge k(y)).
+    (j \wedge k)(x \wedge y) &\quad\equiv\quad j (x \wedge y) \wedge k (x \wedge y)         \\
+                   &\quad=\quad j(x) \wedge j(y) \wedge k(x) \wedge k(y)     \\
+                   &\quad=\quad (j(x) \wedge k(x)) \wedge (j(y) \wedge k(y)) \\
+                   &\quad\equiv\quad (j \wedge k)(x) \wedge (j \wedge k)(y).
   \end{align*}
   For idempotency, let $x : | F |$. We have:
   \begin{align*}
-    j (j(x) \wedge k(x)) \wedge k(j(x) \wedge k(x)) &\quad\le\quad j(j(x)) \wedge j(k(x)) \wedge k(j(x)) \wedge k(k(x)) \\
-                                     &\quad\le\quad j(j(x)) \wedge k(k(x)) & \\
-                                     &\quad\le\quad j(x) \wedge k(x).
+    (j \wedge k)((j \wedge k)(x)) &\quad\equiv\quad j (j(x) \wedge k(x)) \wedge k(j(x) \wedge k(x))      \\
+                        &\quad=\quad j(j(x)) \wedge j(k(x)) \wedge k(j(x)) \wedge k(k(x)) \\
+                        &\quad\le\quad j(j(x)) \wedge k(k(x))                     \\
+                        &\quad=\quad j(x) \wedge k(x)                           \\
+                        &\quad\equiv\quad (j \wedge k)(x).
   \end{align*}
 \end{proof}
 
 \begin{prop}\label{prop:sc-nuclei-semilattice}
   The type of Scott-continuous nuclei on a given $(\UU, \VV, \WW)$-frame $F$ forms a
-  meet-semilattice in the same way as in Definition~\ref{defn:nuclei-semilattice}. Its top element
-  is $\top_{\mathcal{N}(F)}$ which is trivially Scott-continuous. It remains only to be shown that the
-  meet of two Scott-continuous nuclei is a Scott-continuous nucleus. Consider two Scott-continuous
-  nuclei $j$ and $k$ on $F$ and a directed family $\{ x_i \}_{i : I} : \mathsf{Fam}_{\WW}(| F |)$.
+  meet-semilattice.
+\end{prop}
+\begin{proof}
+  The construction is the same as the one in Definition~\ref{defn:nuclei-semilattice}; the top
+  element is $\top_{\mathcal{N}(F)}$ which is trivially Scott-continuous so it remains to show that the
+  meet of two Scott-continuous nuclei is Scott-continuous. Consider two Scott-continuous nuclei $j$
+  and $k$ on some frame $F$ and a directed family $\{ x_i \}_{i : I} : \mathsf{Fam}_{\WW}(| F |)$.
   This follows as:
   \begin{align*}
-    (j \wedge k) \left( \bigvee_{i : I} x_i \right)
-    &\equiv j \left( \bigvee_{i : I} x_i \right) \wedge k \left( \bigvee_{i : I} x_i \right) & \\
-    &= \paren{ \bigvee_{i : I} j(x_i) } \wedge \paren{ \bigvee_{i : I} k(x_i) } & [\text{Scott-continuity of $j$ and $k$}]\\
-    &= \bigvee_{(i, j) : I \times I} j(x_i) \wedge k(x_i) & [\text{distributivity}]\\
-    &= \bigvee_{i : I} j(x_i) \wedge k(x_i) & [\text{\dag}]
+       (j \wedge k) \paren{\bigvee_{i : I} x_i}
+    &\equiv j \paren{\bigvee_{i : I} x_i} \wedge k \paren{\bigvee_{i : I} x_i} & \\
+    &= \paren{\bigvee_{i : I} j(x_i)} \wedge \paren{\bigvee_{i : I} k(x_i)} & [\text{Scott-continuity of $j$ and $k$}]\\
+    &= \bigvee_{(i, j) : I \times I} j(x_i) \wedge k(x_i)                   & [\text{distributivity}]\\
+    &= \bigvee_{i : I} j(x_i) \wedge k(x_i)                          & [\text{\dag}] \\
+    &\equiv \bigvee_{i : I} (j \wedge k)(x_i).
   \end{align*}
   where, for the \dag\ step, we use antisymmetry. The backwards direction is immediate whereas the
   forwards direction follows, essentially, from the monotonicity of nuclei
   (Proposition~\ref{prop:nuclei-mono}). We omit the details.
-\end{prop}
+\end{proof}
 
 \section{Joins}
 
