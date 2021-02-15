@@ -367,22 +367,19 @@ To be able to define the patch frame on $F$, we will also need some lemmas about
   \paragraph{(a).} The inflation property is direct. For meet preservation, consider some
   $x, y : | F |$. We have:
   \begin{align*}
-    \left(\bigvee^N_{i} k_i\right)(x)
-    &\quad\equiv\quad \bigvee \left\{ \alpha(x \wedge y) ~|~ \alpha \in K^* \right\} \\
-    &\quad=\quad \bigvee \left\{ \alpha(x) \wedge \alpha(y) ~|~ \alpha \in K^* \right\}
-          & [\text{$\alpha$ is a prenucleus}] \\
-    &\quad=\quad \bigvee \left\{ \alpha(x) \wedge \beta(y) ~|~ \alpha, \beta \in K^* \right\}
-          & [\text{\todo{complete}}] \\
-    &\quad=\quad \paren{\bigvee \setof{ \alpha(x) ~|~ \alpha \in K^* }} \wedge \paren{\bigvee \setof{ \beta(y) ~|~ \beta \in K^* }}
-          & [\text{distributivity}] \\
-    &\quad\equiv\quad \paren{\bigvee^N_i k_i}(x) \wedge \paren{\bigvee^N_i k_i}(y).
+         \left(\bigvee^N_{i} k_i\right)(x)
+    &\quad\equiv\quad \bigvee_{\alpha \in K^*} \alpha(x \wedge y)                                                                   \\
+    &\quad=\quad \bigvee_{\alpha \in K^*} \alpha(x) \wedge \alpha(y)                                & [\text{$\alpha$ is a prenucleus}]  \\
+    &\quad=\quad \bigvee_{\beta, \gamma \in K^*} \beta(x) \wedge \gamma(y)                             & [\text{\todo{complete}}]      \\
+    &\quad=\quad \paren{\bigvee_{\beta \in K^*} \beta(x)} \wedge \paren{\bigvee_{\gamma \in K^*} \gamma(y)}    & [\text{distributivity}]       \\
+    &\quad\equiv\quad \paren{\bigvee^N_{i : I} k_i}(x) \wedge \paren{\bigvee^N_{i : I} k_i}(y).
   \end{align*}
   For idempotency, let $x : | F |$. We have that:
   \begin{align*}
     \left(\bigvee^N_{i} k_i\right)\left(\left(\bigvee^N_{i} k_i\right)(x)\right)
-    &\quad\equiv\quad \bigvee \setof{ \bigvee \setof{ \alpha(\beta(x)) ~|~ \beta \in K^* } ~|~ \alpha \in K^* } \\
-    &\quad\le\quad \bigvee \setof{ \alpha(\beta(x)) ~|~ \alpha, \beta \in K^* } & [\text{\todo{explain}}]\\
-    &\quad\le\quad \bigvee \setof{ \alpha(x) ~|~ \alpha \in K^* } & [\text{\todo{explain}}]\\
+    &\quad\equiv\quad \bigvee \setof{ \bigvee \setof{ \alpha(\beta(x)) ~|~ \beta in K^* } ~|~ \alpha \in K^* } \\
+    &\quad\le\quad \bigvee_{\alpha, \beta \in K^*} \alpha(\beta(x)) & [\text{\todo{explain}}]\\
+    &\quad\le\quad \bigvee_{\alpha \in K^*} \alpha(x) & [\text{\todo{explain}}]\\
     &\quad\equiv\quad \paren{\bigvee^N_i k_i}(x).
   \end{align*}
 
