@@ -162,6 +162,17 @@ We write $\mathsf{Nucleus}(F)$ to denote the type of nuclei on a given frame $F$
   \end{equation*}
 \end{defn}
 
+\begin{prop}
+  Every Scott-continuous function is monotonic.
+\end{prop}
+\begin{proof}
+  Let $f : | F | \rightarrow | G |$ be a Scott-continuous function and let $x, y : | F |$ such that $x \le y$
+  i.e.\ $\bigvee \{ x, y \} = y$. Note that the set $\{x, y\}$ is directed meaning we have
+  \begin{equation*}
+    f(x) \le \bigvee \setof{f(x), f(y)} = f\paren{\bigvee \setof{x, y}} = f(y).
+  \end{equation*}
+\end{proof}
+
 \section{Meet-semilattice of nuclei}
 
 Nuclei form a meet-semilattice when ordered pointwise.
