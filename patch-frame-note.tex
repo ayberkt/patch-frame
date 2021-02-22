@@ -187,14 +187,6 @@ We denote this meet-semilattice $\mathcal{N}(F)$. Let us also remark that, even 
 primarily interested in the meet-semilattice of nuclei, we also talk about the ordering on
 \emph{prenuclei} by which the same pointwise ordering is meant.
 
-\begin{prop}\label{prop:nucl-lemma-1}
-  Given any two prenuclei $j$ and $k$ on some frame $F$, $j \circ k$ is an upper bound of $\{ j, k \}$.
-\end{prop}
-\begin{proof}
-  Given any $x : | F |$, we have that $k(x) \le j(k(x))$ by the inflation property of $j$ and that
-  $j(x) \le j(k(x))$ by the monotonicity of $j$, since $x \le k(x)$ by the inflation property of $k$.
-\end{proof}
-
 \begin{prop}\label{prop:nuclei-meet}
   Given two nuclei $j$ and $k$ on some frame $F$, the function $j \wedge k \is x \mapsto j(x) \wedge k(x)$ is a
   nucleus.
@@ -219,12 +211,25 @@ primarily interested in the meet-semilattice of nuclei, we also talk about the o
   \end{align*}
 \end{proof}
 
+We will also need the following important property of nuclei.
+
+\begin{prop}\label{prop:nucl-lemma-1}
+  Given any two prenuclei $j$ and $k$ on some frame $F$, $j \circ k$ is an upper bound of $\{ j, k \}$.
+\end{prop}
+\begin{proof}
+  Given any $x : | F |$, we have that $k(x) \le j(k(x))$ by the inflation property of $j$ and that
+  $j(x) \le j(k(x))$ by the monotonicity of $j$, since $x \le k(x)$ by the inflation property of $k$.
+\end{proof}
+
+We now refine the meet-semilattice of nuclei from Proposition~\ref{defn:nuclei-semilattice} by
+considering only those nuclei that are Scott-continuous.
+
 \begin{prop}\label{prop:sc-nuclei-semilattice}
   The type of Scott-continuous nuclei on a given $(\UU, \VV, \WW)$-frame $F$ forms a
   meet-semilattice.
 \end{prop}
 \begin{proof}
-  The construction is the same as the one in Definition~\ref{defn:nuclei-semilattice}; the top
+  The construction is the same as the one in Proposition~\ref{defn:nuclei-semilattice}; the top
   element is $\top_{\mathcal{N}(F)}$ which is trivially Scott-continuous so it remains to show that the
   meet of two Scott-continuous nuclei is Scott-continuous. Consider two Scott-continuous nuclei $j$
   and $k$ on some frame $F$ and a directed family $\{ x_i \}_{i : I} : \mathsf{Fam}_{\WW}(| F |)$.
