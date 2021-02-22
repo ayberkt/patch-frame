@@ -233,18 +233,29 @@ considering only those nuclei that are Scott-continuous.
   element is $\top_{\mathcal{N}(F)}$ which is trivially Scott-continuous so it remains to show that the
   meet of two Scott-continuous nuclei is Scott-continuous. Consider two Scott-continuous nuclei $j$
   and $k$ on some frame $F$ and a directed family $\{ x_i \}_{i : I} : \mathsf{Fam}_{\WW}(| F |)$.
-  This follows as:
+  We then have:
   \begin{align*}
        (j \wedge k) \paren{\bigvee_{i : I} x_i}
-    &\equiv j \paren{\bigvee_{i : I} x_i} \wedge k \paren{\bigvee_{i : I} x_i} & \\
-    &= \paren{\bigvee_{i : I} j(x_i)} \wedge \paren{\bigvee_{i : I} k(x_i)} & [\text{Scott-continuity of $j$ and $k$}]\\
-    &= \bigvee_{(i, j) : I \times I} j(x_i) \wedge k(x_i)                   & [\text{distributivity}]\\
+    &\equiv j \paren{\bigvee_{i : I} x_i} \wedge k \paren{\bigvee_{j : I} x_j} & \\
+    &= \paren{\bigvee_{i : I} j(x_i)} \wedge \paren{\bigvee_{j : I} k(x_j)} & [\text{Scott-continuity of $j$ and $k$}]\\
+    &= \bigvee_{(i, j) : I \times I} j(x_i) \wedge k(x_j)                   & [\text{distributivity}]\\
     &= \bigvee_{i : I} j(x_i) \wedge k(x_i)                          & [\text{\dag}] \\
     &\equiv \bigvee_{i : I} (j \wedge k)(x_i).
   \end{align*}
-  where, for the \dag\ step, we use antisymmetry. The backwards direction is immediate whereas the
-  forwards direction follows, essentially, from the monotonicity of nuclei
-  (Proposition~\ref{prop:nuclei-mono}). We omit the details.
+  where, for the \dag\ step, we use antisymmetry. The backwards direction is immediate. For the forwards
+  direction, we need to show that
+  \begin{equation*}
+    \bigvee_{(i, j) : I \times I} j(x_i) \wedge k(x_j) \quad\le\quad \bigvee_{i : I} j(x_i) \wedge k(x_i),
+  \end{equation*}
+  for which it suffices to show that $\bigvee_{i : I} j(x_i) \wedge k(x_i)$ is an upper bound of
+  $\setof{j(x_i) \wedge k(x_j)}_{(i, j) : I \times I}$. Let $m, n : I$ be two arbitrary indices. As
+  $\{x_i\}_{i : I}$ is directed, there must exist some $o$ such that $x_o$ is greater than both
+  $x_m$ and $x_n$. Using the monotonicity of $j$ and $k$ (Proposition~\ref{prop:nuclei-mono}), we
+  get
+  \begin{equation*}
+    j(x_m) \wedge k(x_n) \quad\le\quad j(x_o) \wedge k(x_o) \quad\le\quad \bigvee_{i : I} j(x_i) \wedge k(x_i)
+  \end{equation*}
+  as needed.
 \end{proof}
 
 \section{Joins}
